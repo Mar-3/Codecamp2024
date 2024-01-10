@@ -30,7 +30,6 @@ export const Navbar = ({changeState}) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  console.log(Boolean(anchorElNav));
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -130,7 +129,10 @@ export const Navbar = ({changeState}) => {
             >
 
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={() => {
+                  handleCloseUserMenu;
+                  changeState(setting);
+                }}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
