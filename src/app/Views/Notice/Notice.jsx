@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import "./Notice.css";
-//import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 
 export const Notice = () => {
   var distance = 800; // In meters
@@ -37,14 +37,20 @@ export const Notice = () => {
             <div>
               <p>{type}</p>
               <h2>{title}</h2>
-              <p>Author: {author}</p>
-              {profile_pic_url && (
-                <img src={profile_pic_url} alt="User's profile picture" />
-              )}
-              <p>In {area}</p>
-              <p>
-                ~{distance} {unit} from your location
-              </p>
+              <Grid container>
+                <Grid item xs={6}>
+                  <p>Author: {author}</p>
+                  <p>In {area}</p>
+                  <p>
+                    ~{distance} {unit} from your location
+                  </p>
+                </Grid>
+                <Grid item xs={6}>
+                  {profile_pic_url && (
+                    <img src={profile_pic_url} alt="User's profile picture" />
+                  )}
+                </Grid>
+              </Grid>
             </div>
             <br></br>
             <p>{description}</p>
