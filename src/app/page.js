@@ -7,6 +7,8 @@ import { Notice } from './Views/Notice/Notice';
 import { Navbar } from './ui/Navbar';
 import { Login } from './Views/User/Login/Login';
 import { Register } from './Views/User/Register/Register';
+import { Dashboard } from './Views/User/Dashboard/Dashboard';
+import { Profile } from './Views/User/Profile/Profile';
 
 
 
@@ -22,7 +24,9 @@ export default function App() {
     View2: {component: View2, props: []},
     Notice: {component: Notice, props: []},
     Login: {component: Login, props: [setLoggedIn, setView]},
-    Register: {component: Register, props: []}
+    Register: {component: Register, props: []},
+    Dashboard: {component: Dashboard, props: []},
+    Profile: {component: Profile, props: []}
   }
 
   const currentView = () => {

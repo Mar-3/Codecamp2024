@@ -90,7 +90,7 @@ export const Navbar = ({changeView, loggedIn, }) => {
             component="div"
           sx={{mr:5, display: { xs: 'none', sm: 'block' } }}
           >
-            Skinnarila Notification Board
+            Skinnarila Notice Board
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
