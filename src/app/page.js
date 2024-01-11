@@ -37,7 +37,7 @@ export default function App() {
     <>
     <Navbar changeView={setView} loggedIn={loggedIn} setLoggedIn={setLoggedIn}></Navbar>
     <main className={styles.main}>
-        <div id="content">
+        <div className={styles.main}>
           {currentView()}
 
 
