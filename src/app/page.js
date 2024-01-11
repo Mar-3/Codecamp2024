@@ -14,20 +14,24 @@ const views = {
 
 export default function App() {
   const [view, setView] = useState("base");
+
+  // Temporary fake login
+  const [loggedIn, setLoggedIn] = useState("false");
+
   console.log(Object.keys(views));
   console.log(views.base)
+
+  const currentView = () => {
+    const CurrentView = views[view];
+    return <CurrentView props=''/>
+  }
   return (
     <>
-    <Navbar changeState={setView}></Navbar>
+    <Navbar changeView={setView} loggedIn={loggedIn} setLoggedIn={setLoggedIn}></Navbar>
     <main className={styles.main}>
         <div id="content">
-          {Object.keys(views).map((key) => {
-            if (view === key) {
-              const NewView = views[key];
-              return <><NewView props={''} key={view}/></>;
-            }
-            return null;
-          })}
+          {currentView()}
+
 
         </div>
       </main>
