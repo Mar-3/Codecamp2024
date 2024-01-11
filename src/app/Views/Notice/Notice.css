@@ -18,3 +18,32 @@
   top: 5px;
   right: 5px;
 }
+
+.profile-pic {
+  padding-right: 50px;
+}
+
+.author-profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notice-author-info {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
