@@ -9,7 +9,7 @@ import { Login } from './Views/User/Login/Login';
 import { Register } from './Views/User/Register/Register';
 import { Dashboard } from './Views/User/Dashboard/Dashboard';
 import { Profile } from './Views/User/Profile/Profile';
-
+import { Account } from './Views/User/Account/Account';
 
 
 export default function App() {
@@ -26,7 +26,8 @@ export default function App() {
     Login: {component: Login, props: [setLoggedIn, setView]},
     Register: {component: Register, props: []},
     Dashboard: {component: Dashboard, props: []},
-    Profile: {component: Profile, props: []}
+    Profile: {component: Profile, props: []},
+    Account: {component: Account, props: []}
   }
 
   const currentView = () => {
@@ -37,11 +38,7 @@ export default function App() {
     <>
     <Navbar changeView={setView} loggedIn={loggedIn} setLoggedIn={setLoggedIn}></Navbar>
     <main className={styles.main}>
-        <div className={styles.main}>
           {currentView()}
-
-
-        </div>
       </main>
     </>
   )

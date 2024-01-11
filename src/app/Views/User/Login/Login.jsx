@@ -13,7 +13,7 @@ export const Login = ({props}) => {
         <h1>LOGIN page</h1>
         <Button size="large" onClick={() => {
           setLoggedIn(true);
-          setView('Base');
+          setView('FrontPage');
         }}>LOGIN</Button>
     </>
   )
