@@ -1,28 +1,28 @@
 'use client'
 import React, { useState } from 'react';
 import styles from './page.module.css'
-import { BaseView } from './Views/BaseView/BaseView';
+import { FrontPage } from './Views/FrontPage/FrontPage';
 import { View2 } from './Views/View2/BaseView';
 import { Notice } from './Views/Notice/Notice';
 import { Navbar } from './ui/Navbar';
-import { Login } from './Views/Login/Login';
-import { Register } from './Views/Register/Register';
+import { Login } from './Views/User/Login/Login';
+import { Register } from './Views/User/Register/Register';
 
 
 
 export default function App() {
-  const [view, setView] = useState("base");
+  const [view, setView] = useState("FrontPage");
 
   // Temporary fake login
   const [loggedIn, setLoggedIn] = useState(false);
 
   // Insert all new views here in this format
   const views = {
-    base: {component: BaseView, props: []},
-    view2: {component: View2, props: []},
-    notice: {component: Notice, props: []},
-    login: {component: Login, props: [setLoggedIn]},
-    register: {component: Register, props: []}
+    FrontPage: {component: FrontPage, props: []},
+    View2: {component: View2, props: []},
+    Notice: {component: Notice, props: []},
+    Login: {component: Login, props: [setLoggedIn, setView]},
+    Register: {component: Register, props: []}
   }
 
   const currentView = () => {

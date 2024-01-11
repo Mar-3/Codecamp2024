@@ -5,11 +5,11 @@ import * as React from "react";
 
 
 // Add view name here to add link to app bar.
-const pages = ['base', 'view2','notice', 'login'];
+const pages = ['Base', 'View2','Notice'];
 
 
-const settings = ['profile', 'Account', 'Dashboard', 'Logout'];
-const notLoggedInSettings = ['login', 'register'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const notLoggedInSettings = ['Login', 'Register'];
 
 
 export const Navbar = ({changeView, loggedIn, }) => {
