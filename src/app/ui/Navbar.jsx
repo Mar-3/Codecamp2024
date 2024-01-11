@@ -5,12 +5,14 @@ import * as React from "react";
 
 
 // Add view name here to add link to app bar.
-const pages = ['base', 'view2','notice'];
+const pages = ['base', 'view2','notice', 'login'];
 
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['profile', 'Account', 'Dashboard', 'Logout'];
+const notLoggedInSettings = ['login', 'register'];
 
-export const Navbar = ({changeState}) => {
+
+export const Navbar = ({changeView, loggedIn, }) => {
 
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -30,6 +32,13 @@ export const Navbar = ({changeState}) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const getUserSettings = () => {
+    return (
+      !loggedIn ? notLoggedInSettings : settings
+    );
+  }
+  
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -68,11 +77,6 @@ export const Navbar = ({changeState}) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <Typography>asd</Typography>
-              <Typography>asd</Typography>
-              <Typography>asd</Typography>
-              <Typography>asd</Typography>
-              <Typography>asd</Typography>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
@@ -94,7 +98,7 @@ export const Navbar = ({changeState}) => {
               <Button
                 key={page}
                 onClick={() => {
-                  changeState(page);
+                  changeView(page);
                   handleCloseNavMenu();
                 }}
                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -128,14 +132,16 @@ export const Navbar = ({changeState}) => {
               onClose={handleCloseUserMenu}
             >
 
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={() => {
-                  handleCloseUserMenu;
-                  changeState(setting);
-                }}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {
+                getUserSettings().map((setting) => (
+                  <MenuItem key={setting} onClick={() => {
+                    handleCloseUserMenu;
+                    changeView(setting);
+                  }}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))
+              }
             </Menu>
 
           </Box>
