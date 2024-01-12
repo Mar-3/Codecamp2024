@@ -5,7 +5,7 @@ import * as React from "react";
 
 
 // Add view name here to add link to app bar.
-const pages = ['FrontPage', 'View2','Notice'];
+const pages = ['FrontPage', 'Search','Map', 'Profile'];
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
