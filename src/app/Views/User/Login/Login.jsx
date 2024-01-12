@@ -1,20 +1,47 @@
 'use client'
 import React from "react";
-import { FormControl, StyledInput, HelperText, Label , Button} from "@mui/material"
+import { useState } from "react";
+
+
+function handleLogin(username, password) {
+  const userDetails = {username: username, password: password};
+  return (userDetails);
+}
+
+
 
 export const Login = ({props}) => {
+  console.log(props);
   const setLoggedIn = props[0];
   const setView = props[1];
-  // Logiikkaa yms
+  
+  const [username ,setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  
 
-  // Returniin kaikki renderävät komponentit ja html
+
   return (
     <>
         <h1>LOGIN page</h1>
-        <Button size="large" onClick={() => {
-          setLoggedIn(true);
-          setView('FrontPage');
-        }}>LOGIN</Button>
+        <form>
+          
+          <br/>
+          <label>Username 
+            <input type="text" name="username" onChange={e => setUsername(e.target.value)}/>
+          </label>
+          <br/>
+          <br/>
+          <label>Password
+            <input type="password" onChange={e => setPassword(e.target.value)} name="password"/>
+          </label>
+          <br/>
+          <br/>
+          <input type="button" value="Login" onClick={() => {
+            const userDetails = handleLogin(username, password);
+            setLoggedIn(userDetails);
+            setView("Profile")}}/>
+        </form>
     </>
   )
 }
+
