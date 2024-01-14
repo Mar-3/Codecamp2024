@@ -1,8 +1,9 @@
 export const mockdata = {
   notices: [
     {
+      id: 0,
       title: "need a carjack in the weekend in skinnarila region!",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "lorem upsum",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
@@ -13,8 +14,9 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 1,
       title: "dog walking company",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "2 year old Samoyed looking for walking buddies!",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
@@ -25,8 +27,9 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 2,
       title: "a bass player needed for a punk band!",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "Practises held on Thursdays, come try out!",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
@@ -37,6 +40,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 3,
       title: "Sewing services for student overalls or other clothing!",
       type: "Offering...",
       ingress: "Costs need to be covered",
@@ -49,8 +53,9 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 4,
       title: "need a carjack in the weekend in skinnarila region!",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "lorem upsum",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
@@ -60,8 +65,9 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 5,
       title: "need a carjack in the weekend in skinnarila region!",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "lorem upsum",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
@@ -71,8 +77,9 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 6,
       title: "need a carjack in the weekend in skinnarila region!",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "lorem upsum",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
@@ -82,8 +89,9 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 7,
       title: "need a carjack in the weekend in skinnarila region!",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "lorem upsum",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
@@ -93,8 +101,9 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 8,
       title: "need a carjack in the weekend in skinnarila region!",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "lorem upsum",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
@@ -104,8 +113,9 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 9,
       title: "need a carjack in the weekend in skinnarila region!",
-      type: "looking for...",
+      type: "Looking for...",
       ingress: "lorem upsum",
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
