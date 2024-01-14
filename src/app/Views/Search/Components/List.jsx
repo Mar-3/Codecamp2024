@@ -5,15 +5,18 @@ import { Grid, Item } from "@mui/material";
 import { NoticeBox } from "../../NoticeBox/NoticeBox";
 
 function List(props) {
+    const includeLookingFor = props.includeLookingFor;
+    const includeOffering = props.includeOffering;
   //create a new array by filtering the original array
   const filteredData = mockdata.notices.filter((el) => {
     //if no input the return the original
+    console.log(includeLookingFor);
     if (props.input === "") {
-      return el;
+      return ((el.type === "Looking for..." && includeLookingFor) || (el.type === "Offering..." && includeOffering));
     }
     //return the item which contains the user input
     else {
-      return el.title.toLowerCase().includes(props.input);
+      return (el.title.toLowerCase().includes(props.input) && ((el.type === "Looking for..." && includeLookingFor) || (el.type === "Offering..." && includeOffering)));
     }
   });
   if (props) {

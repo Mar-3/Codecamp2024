@@ -3,6 +3,39 @@
 }
 
 .search {
-    width: 80%;
+    width: 100%;
     margin-bottom: 20px;
+    margin-right: 20px;
   }
+
+.button-column {
+    align-items: start;
+    justify-items: flex-start;
+
+}
+
+.filter-button {
+    width: auto;
+    height: auto;
+    font-size: large;
+    padding: 15px;
+    margin-left: 0px;
+    margin-right: 10px;
+    align-self: start;
+    justify-self: flex-start;
+    background-color: aquamarine;
+}
+
+.filter-text-column {
+    margin-left: 15px;
+    margin-right: 0px;
+    align-items: center;
+    vertical-align: middle;
+    justify-items: center;
+}
+
+.filter-text {
+    align-self: center;
+    vertical-align: middle;
+    justify-self: center;
+}
