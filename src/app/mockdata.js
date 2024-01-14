@@ -1,6 +1,7 @@
 export const mockdata = {
   notices: [
     {
+      id: 0,
       title: "need a carjack in the weekend in skinnarila region!",
       type: "looking for...",
       ingress: "lorem upsum",
@@ -13,6 +14,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 1,
       title: "dog walking company",
       type: "looking for...",
       ingress: "2 year old Samoyed looking for walking buddies!",
@@ -25,6 +27,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 2,
       title: "a bass player needed for a punk band!",
       type: "looking for...",
       ingress: "Practises held on Thursdays, come try out!",
@@ -37,6 +40,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 3,
       title: "Sewing services for student overalls or other clothing!",
       type: "Offering...",
       ingress: "Costs need to be covered",
@@ -49,6 +53,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 4,
       title: "need a carjack in the weekend in skinnarila region!",
       type: "looking for...",
       ingress: "lorem upsum",
@@ -60,6 +65,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 5,
       title: "need a carjack in the weekend in skinnarila region!",
       type: "looking for...",
       ingress: "lorem upsum",
@@ -71,6 +77,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 6,
       title: "need a carjack in the weekend in skinnarila region!",
       type: "looking for...",
       ingress: "lorem upsum",
@@ -82,6 +89,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 7,
       title: "need a carjack in the weekend in skinnarila region!",
       type: "looking for...",
       ingress: "lorem upsum",
@@ -93,6 +101,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 8,
       title: "need a carjack in the weekend in skinnarila region!",
       type: "looking for...",
       ingress: "lorem upsum",
@@ -104,6 +113,7 @@ export const mockdata = {
       location: "approximate location here, not sure how it should be saved",
     },
     {
+      id: 9,
       title: "need a carjack in the weekend in skinnarila region!",
       type: "looking for...",
       ingress: "lorem upsum",
