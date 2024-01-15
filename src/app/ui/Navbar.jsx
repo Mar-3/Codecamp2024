@@ -5,7 +5,7 @@ import * as React from "react";
 
 
 // Add view name here to add link to app bar.
-const pages = ['FrontPage', 'Search','Map', 'Profile'];
+const pages = ['FrontPage', 'Search','Map', 'New Notice'];
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -78,7 +78,10 @@ export const Navbar = ({changeView, loggedIn, }) => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page}
+                onClick={() => {
+                  changeView(page);
+                  handleCloseNavMenu();}}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}

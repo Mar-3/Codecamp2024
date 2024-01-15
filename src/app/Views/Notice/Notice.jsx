@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./Notice.css";
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import PlaceIcon from "@mui/icons-material/Place";
@@ -36,9 +37,9 @@ export const Notice = ({ props }) => {
 
   return (
     <div>
-      <button onClick={toggleNotice}>Open Notice</button>
+      <Button variant="outlined" onClick={toggleNotice}>Open Notice</Button>
       {isOpen && (
-        <div className="notice">
+        <div className="notice" alignContent="space-between" z-index={10}>
           <div className="notice-content">
             <button className="close-btn" onClick={toggleNotice}>
               Close
