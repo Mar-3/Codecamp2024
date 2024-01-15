@@ -4,10 +4,7 @@ import { Notice } from "../Notice/Notice";
 import React from "react";
 
 export const NoticeBox = ({ props }) => {
-  // Logiikkaa yms
   if (props) {
-    console.log(props.title, props.area, props.ingress);
-    // Returniin kaikki renderävät komponentit ja html
     return (
       <Grid item xs="5" minHeight="15rem" sx={{ padding: "1rem" }}>
         <Paper item sx={{ height: "100%", padding: "1rem" }}>

@@ -11,7 +11,7 @@ export const mockdata = {
       image: "/two_kittens.png",
       area: "Skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0569,28.0953],
     },
     {
       id: 1,
@@ -24,7 +24,7 @@ export const mockdata = {
       image: "/samoyed.jpg",
       area: "Kourula",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0533,28.1038],
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ export const mockdata = {
       image: "/turtle.jpg",
       area: "skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0377,28.1007],
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ export const mockdata = {
       image: "/bad-path.fail",
       area: "skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0502,28.1836],
     },
     {
       id: 4,
@@ -62,7 +62,7 @@ export const mockdata = {
       nickname: "carjacker22",
       area: "skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0502,28.1836],
     },
     {
       id: 5,
@@ -74,7 +74,7 @@ export const mockdata = {
       nickname: "carjacker22",
       area: "skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0502,28.1836],
     },
     {
       id: 6,
@@ -86,7 +86,7 @@ export const mockdata = {
       nickname: "carjacker22",
       area: "skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0502,28.1836],
     },
     {
       id: 7,
@@ -98,7 +98,7 @@ export const mockdata = {
       nickname: "carjacker22",
       area: "skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0502,28.1836],
     },
     {
       id: 8,
@@ -110,7 +110,7 @@ export const mockdata = {
       nickname: "carjacker22",
       area: "skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0502,28.1836],
     },
     {
       id: 9,
@@ -122,7 +122,7 @@ export const mockdata = {
       nickname: "carjacker22",
       area: "skinnarila",
       timedate: "11/01/2024, 12:13",
-      location: "approximate location here, not sure how it should be saved",
+      location: [61.0502,28.1836],
     },
   ],
 };
