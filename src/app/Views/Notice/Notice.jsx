@@ -39,7 +39,7 @@ export const Notice = ({ props }) => {
     <div>
       <Button variant="outlined" onClick={toggleNotice}>Open Notice</Button>
       {isOpen && (
-        <div className="notice" alignContent="space-between" z-index={10}>
+        <div className="notice" alignContent="space-between" style={{zIndex: 10}}>
           <div className="notice-content">
             <button className="close-btn" onClick={toggleNotice}>
               Close
