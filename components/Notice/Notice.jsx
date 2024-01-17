@@ -1,15 +1,31 @@
 "use client";
-import React, { useState } from "react";
-import "./Notice.css";
+import React, {useState} from "react";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Image from "next/image";
 import PlaceIcon from "@mui/icons-material/Place";
 import MessageIcon from "@mui/icons-material/Message";
 import PersonIcon from "@mui/icons-material/Person";
+import { Modal, Paper } from "@mui/material";
+import { usePathname, useRouter } from "next/navigation";
 
 export const Notice = ({ props }) => {
+
+  const router = useRouter();
+  const path = usePathname();
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '80%',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    padding: '3rem',
+  };
+
   var distance = 800; // In meters
   if (distance >= 1000) {
     distance = (distance / 1000).toFixed(1);
@@ -24,11 +40,11 @@ export const Notice = ({ props }) => {
   const image = props.image;
   const description = props.description;
 
-  const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(false);
 
   const toggleNotice = () => {
-    setIsOpen(!isOpen);
+    router.push(path)
+    
   };
 
   const handleImageError = () => {
@@ -36,15 +52,10 @@ export const Notice = ({ props }) => {
   };
 
   return (
-    <div>
-      <Button variant="outlined" onClick={toggleNotice}>Open Notice</Button>
-      {isOpen && (
-        <div className="notice" alignContent="space-between" style={{zIndex: 10}}>
-          <div className="notice-content">
-            <button className="close-btn" onClick={toggleNotice}>
-              Close
-            </button>
-            <div>
+    <Modal open={true} onClose={toggleNotice}>
+        <Paper style={style} className="notice" aligncontent="space-between">
+          <Box className="notice-content">
+            <Box>
               <Grid container>
                 <Grid item xs={8}>
                   <p>{type}</p>
@@ -92,31 +103,14 @@ export const Notice = ({ props }) => {
                     justifyContent="flex-end"
                     className="profile-pic"
                   >
-                    {error ? (
-                      <Image
-                        src="/profile_picture.png"
-                        width={160}
-                        height={160}
-                        alt="User's profile picture"
-                      />
-                    ) : (
-                      <Image
-                        src={image}
-                        width={160}
-                        height={160}
-                        alt="User's profile picture"
-                        onError={handleImageError}
-                      />
-                    )}
                   </Box>
                 </Grid>
               </Grid>
-            </div>
+            </Box>
             <br></br>
             <p>{description}</p>
-          </div>
-        </div>
-      )}
-    </div>
+          </Box>
+        </Paper>
+    </Modal>
   );
 };

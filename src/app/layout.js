@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import { Navbar } from '../../ui/Navbar'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -8,10 +9,14 @@ export const metadata = {
   description: 'Find services and hobbies around you!',
 }
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head/>
+      <body className='main'>
+        <Navbar/>
+        {children}</body>
     </html>
   )
 }

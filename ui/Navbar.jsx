@@ -5,8 +5,7 @@ import * as React from "react";
 
 
 // Add view name here to add link to app bar.
-const pages = ['FrontPage', 'Search','Map', 'New Notice'];
-
+const pages = [{name:'Front Page', link:"FrontPage"},{name:'Map', link:"Map"},{name: "New Notice", link: "NewNotice"}];
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const notLoggedInSettings = ['Login', 'Register'];
@@ -41,6 +40,7 @@ export const Navbar = ({changeView, loggedIn, }) => {
   
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -78,11 +78,8 @@ export const Navbar = ({changeView, loggedIn, }) => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page}
-                onClick={() => {
-                  changeView(page);
-                  handleCloseNavMenu();}}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.link} href={page.link}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -99,14 +96,11 @@ export const Navbar = ({changeView, loggedIn, }) => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={() => {
-                  changeView(page);
-                  handleCloseNavMenu();
-                }}
+                key={page.link}
+                href={page.link}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
@@ -153,6 +147,6 @@ export const Navbar = ({changeView, loggedIn, }) => {
         </Toolbar>
       </AppBar>
     </Box>
-
+  </>
   )
 }

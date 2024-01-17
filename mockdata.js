@@ -1,5 +1,5 @@
-export const mockdata = {
-  notices: [
+export default function mockdata() {
+  const mockdata ={ notices: [
     {
       id: 0,
       title: "need a carjack in the weekend in skinnarila region!",
@@ -124,5 +124,6 @@ export const mockdata = {
       timedate: "11/01/2024, 12:13",
       location: [61.0502,28.1836],
     },
-  ],
+  ],}
+  return mockdata.notices;
 };
