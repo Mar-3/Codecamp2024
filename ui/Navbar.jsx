@@ -2,6 +2,7 @@
 import { AppBar, Toolbar, IconButton, Typography, Box, Menu, MenuItem, Tooltip, Avatar, Button} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu"
 import * as React from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
 
 // Add view name here to add link to app bar.
@@ -37,7 +38,9 @@ export const Navbar = ({changeView, loggedIn, }) => {
       !loggedIn ? notLoggedInSettings : settings
     );
   }
-  
+
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
 
   return (
     <>
@@ -97,7 +100,7 @@ export const Navbar = ({changeView, loggedIn, }) => {
             {pages.map((page) => (
               <Button
                 key={page.link}
-                href={page.link}
+                href={page.link + '?' + params.toString()}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page.name}

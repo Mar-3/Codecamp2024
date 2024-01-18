@@ -22,13 +22,13 @@ export const Search = ({ props }) => {
     input = e.target.value.toLowerCase();
     const params = new URLSearchParams(searchParams);
     params.set("search", input);
-    router.push(path + '?' + params.toString());
+    router.push(path + "?" + params.toString());
   };
 
   let setToggle = (name, state) => {
     const params = new URLSearchParams(searchParams);
     params.set(name, state);
-    router.push(path + '?' + params.toString());
+    router.push(path + "?" + params.toString());
   };
 
   return (
@@ -42,6 +42,7 @@ export const Search = ({ props }) => {
               variant="outlined"
               fullWidth
               label="Search"
+              defaultValue={search}
             />
           </Box>
         </Grid>

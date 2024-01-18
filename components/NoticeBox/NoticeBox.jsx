@@ -12,7 +12,6 @@ export default function NoticeBox({ props }) {
     const params = new URLSearchParams(searchParams);
     params.set("id", id);
     router.push(pathname + '?' + params.toString());
-    //router.push(window.location.href+"&id="+id);
   }
 
   return (
