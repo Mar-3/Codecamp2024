@@ -1,9 +1,9 @@
 "use client";
-import { React, useState } from "react";
+import { React } from "react";
 import "../../src/app/globals.css";
-import { Grid, Item } from "@mui/material";
 import NoticeBox from "../NoticeBox/NoticeBox";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Grid, Typography} from "@mui/material";
 
 export default function List({ notices }) {
   const path = usePathname();
@@ -42,7 +42,7 @@ export default function List({ notices }) {
         </>
       );
     } else {
-      return <h2>No search results</h2>;
+      return <Typography variant="h4" marginLeft={2 + "em"}>No search results</Typography>;
     }
   } else {
     return(filteredData)
