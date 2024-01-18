@@ -3,9 +3,10 @@ import { React, useState } from "react";
 import "../../src/app/globals.css";
 import { Grid, Item } from "@mui/material";
 import NoticeBox from "../NoticeBox/NoticeBox";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function List({ notices }) {
+  const path = usePathname();
   const searchParams = useSearchParams();
   const input = searchParams.get("search") ?? "";
   const includeLookingFor = !(searchParams.get("lookingFor") === "false");
@@ -29,17 +30,21 @@ export default function List({ notices }) {
       );
     }
   });
-  if (filteredData && filteredData.length > 0) {
-    return (
-      <>
-        <Grid container spacing={3}>
-          {filteredData.map((notice) => {
-            return <NoticeBox props={notice}></NoticeBox>;
-          })}
-        </Grid>
-      </>
-    );
+  if (path === "/FrontPage") {
+    if (filteredData && filteredData.length > 0) {
+      return (
+        <>
+          <Grid container spacing={3}>
+            {filteredData.map((notice) => {
+              return <NoticeBox props={notice}></NoticeBox>;
+            })}
+          </Grid>
+        </>
+      );
+    } else {
+      return <h2>No search results</h2>;
+    }
   } else {
-    return <h2>No search results</h2>;
+    return(filteredData)
   }
 }

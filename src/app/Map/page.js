@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Search } from "@components/Search/Search";
 import dynamic from "next/dynamic";
 import { Notice } from "@components/Notice/Notice";
+import List from "@components/List/List";
 import { useSearchParams } from "next/navigation";
 
 const Map = dynamic(() => import("@components/Map/Map"));
@@ -12,7 +13,7 @@ const Map = dynamic(() => import("@components/Map/Map"));
 export default function Frontpage() {
 
   const notices = useContext(MockdataContext)();
-  
+  const listProps = { notices }
   const searchParams = useSearchParams();
   const noticeId = searchParams.get("id");
   
@@ -21,7 +22,7 @@ export default function Frontpage() {
   return (
     <>
       <Search props={setList}></Search>
-      <Map props={list}></Map>
+      <Map props={List(listProps)}></Map>
       {!noticeId ? null : <Notice sx={{position:'static'}} props={notices[noticeId]}/>}
     </>
   )
