@@ -39,3 +39,21 @@
     vertical-align: middle;
     justify-self: center;
 }
+
+.toggle-button-green {
+  background-color: aquamarine;
+}
+
+.toggle-button-green:hover {
+    background-color: rgb(67, 158, 128);
+  }
+
+.toggle-button-red {
+    text-decoration: line-through;
+    background-color: rgb(163, 55, 55);
+  }
+
+.toggle-button-red:hover {
+    text-decoration: line-through;
+    background-color: rgb(126, 0, 0);
+  }

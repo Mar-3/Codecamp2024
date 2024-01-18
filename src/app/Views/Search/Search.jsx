@@ -1,14 +1,15 @@
 "use client";
 import { React, useState } from "react";
 import "./Search.css";
+import { alpha, styled } from '@mui/material/styles';
 import TextField from "@mui/material/TextField";
 import List from "./Components/List";
-import { Grid } from "@mui/material";
+import { Box, Grid, Typography, ToggleButton } from "@mui/material";
 
 export const Search = ({ props }) => {
   const [inputText, setInputText] = useState("");
-  const [showLookingFor, setLookingFor] = useState(true);
-  const [showOffering, setOffering] = useState(true);
+  const [lookingFor, setLookingFor] = useState(true);
+  const [offering, setOffering] = useState(true);
   const view = props[0];
 
   let inputHandler = (e) => {
@@ -18,73 +19,53 @@ export const Search = ({ props }) => {
     setInputText(lowerCase);
   };
 
-  let toggleLookingFor = async (e) => {
-    e.preventDefault();
-    await setLookingFor(!showLookingFor);
-    var but = document.getElementById("looking-for-button");
-    if (!showLookingFor) {
-      but.style.backgroundColor = "aquamarine";
-      but.style.textDecoration = "";
-    } else {
-      but.style.backgroundColor = "red";
-      but.style.textDecoration = "line-through";
-    }
-  };
-
-  let toggleOffering = async (e) => {
-    e.preventDefault();
-    await setOffering(!showOffering);
-    var but = document.getElementById("offering-button");
-    if (!showOffering) {
-      but.style.backgroundColor = "aquamarine";
-      but.style.textDecoration = "";
-    } else {
-      but.style.backgroundColor = "red";
-      but.style.textDecoration = "line-through";
-    }
-  };
-
   if (view.toString() === "FrontPage") {
     return (
-      <>
-        <div className="main">
-          <Grid container>
-            <Grid item xs={8}>
-              <div className="search">
-                <TextField
-                  id="search-input"
-                  onChange={inputHandler}
-                  variant="outlined"
-                  fullWidth
-                  label="Search"
-                />
-              </div>
-            </Grid>
-            <Grid className="filter-text-column" item xs={0.8}>
-              <h4 className="filter-text">Searching for:</h4>
-            </Grid>
-            <Grid className="button-column" item xs={1}>
-              <button
-                id="looking-for-button"
-                className="filter-button"
-                onClick={toggleLookingFor}
-              >
-                Looking For
-              </button>
-            </Grid>
-            <Grid className="button-column" item xs={1}>
-              <button
-                id="offering-button"
-                className="filter-button"
-                onClick={toggleOffering}
-              >
-                Offering
-              </button>
-            </Grid>
+      <Box className="main">
+        <Grid container>
+          <Grid item xs={8}>
+            <Box className="search">
+              <TextField
+                id="search-input"
+                onChange={inputHandler}
+                variant="outlined"
+                fullWidth
+                label="Search"
+              />
+            </Box>
           </Grid>
-          <List input={inputText} includeLookingFor={showLookingFor} includeOffering={showOffering} />
-        </div>
-      </>
+          <Grid className="filter-text-column" item xs={0.8}>
+            <Typography variant="p" className="filter-text">Searching for:</Typography>
+          </Grid>
+          <Grid className="button-column" item xs={1}>
+            <ToggleButton
+              id="looking-for-button"
+              value={lookingFor}
+              className={lookingFor ? "toggle-button-green" : "toggle-button-red"}
+              onChange={() => {
+                setLookingFor(!lookingFor)}}
+            >
+              Looking For
+            </ToggleButton>
+          </Grid>
+          <Grid className="button-column" item xs={1}>
+            <ToggleButton
+              id="offering-button"
+              value={offering}
+              className={offering ? "toggle-button-green" : "toggle-button-red"}
+              onChange={() => {
+                setOffering(!offering)}}
+            >
+              Offering
+            </ToggleButton>
+          </Grid>
+        </Grid>
+        <List
+          input={inputText}
+          includeLookingFor={lookingFor}
+          includeOffering={offering}
+        />
+      </Box>
     );
   }
 };

@@ -1,9 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import "./Notice.css";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import { Grid, Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import PlaceIcon from "@mui/icons-material/Place";
 import MessageIcon from "@mui/icons-material/Message";
@@ -36,32 +34,34 @@ export const Notice = ({ props }) => {
   };
 
   return (
-    <div>
-      <Button variant="outlined" onClick={toggleNotice}>Open Notice</Button>
+    <Box>
+      <Button variant="outlined" onClick={toggleNotice}>
+        Open Notice
+      </Button>
       {isOpen && (
-        <div className="notice" alignContent="space-between" style={{zIndex: 10}}>
-          <div className="notice-content">
-            <button className="close-btn" onClick={toggleNotice}>
+        <Box
+          className="notice"
+          alignContent="space-between"
+          style={{ zIndex: 10 }}
+        >
+          <Box className="notice-content">
+            <Button className="close-btn" onClick={toggleNotice}>
               Close
-            </button>
-            <div>
+            </Button>
+            <Box>
               <Grid container>
                 <Grid item xs={8}>
-                  <p>{type}</p>
-                  <h2>{title}</h2>
+                <Typography variant="p">{type}</Typography>
+                <Typography variant="h4">{title}</Typography>
                   <Grid container className="notice-author-info">
                     <Grid item xs={0.5} className="iconColumn">
                       <PersonIcon className="icon" />
                     </Grid>
                     <Grid item xs={7.5}>
-                      <p className="author-profile-btn">
-                        Author:&nbsp; {" "}
-                        <button
-                          onClick={toggleNotice}
-                        >
-                          {author}
-                        </button>
-                      </p>
+                    <Typography variant="p">
+                        Author:&nbsp;{" "}
+                        <Button onClick={toggleNotice}>{author}</Button>
+                      </Typography>
                     </Grid>
                   </Grid>
                   <Grid container className="notice-author-info">
@@ -69,10 +69,10 @@ export const Notice = ({ props }) => {
                       <PlaceIcon className="icon" />
                     </Grid>
                     <Grid item xs={7.5}>
-                      <p>In {area}</p>
-                      <p>
+                    <Typography variant="p" display="block">In {area}</Typography>
+                    <Typography variant="p">
                         ~{distance} {unit} from your location
-                      </p>
+                      </Typography>
                     </Grid>
                   </Grid>
                   <Grid container className="notice-author-info">
@@ -80,9 +80,9 @@ export const Notice = ({ props }) => {
                       <MessageIcon className="icon" />
                     </Grid>
                     <Grid item xs={7.5}>
-                      <button className="contact-btn" onClick={toggleNotice}>
+                      <Button className="contact-btn" onClick={toggleNotice}>
                         Contact {author}
-                      </button>
+                      </Button>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -111,12 +111,11 @@ export const Notice = ({ props }) => {
                   </Box>
                 </Grid>
               </Grid>
-            </div>
-            <br></br>
-            <p>{description}</p>
-          </div>
-        </div>
+            </Box>
+            <Typography variant="p">{description}</Typography>
+          </Box>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
