@@ -34,7 +34,7 @@ export default function List({ notices }) {
     if (filteredData && filteredData.length > 0) {
       return (
         <>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} marginLeft={1 + "em"}>
             {filteredData.map((notice) => {
               return <NoticeBox props={notice}></NoticeBox>;
             })}

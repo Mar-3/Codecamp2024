@@ -32,9 +32,9 @@ export const Search = ({ props }) => {
   };
 
   return (
-    <Box className="main">
+    <Box className="main" marginTop={2} marginBottom={2} marginLeft={3 + "em"}>
       <Grid container>
-        <Grid item xs={8}>
+        <Grid item xs={6} marginRight={2}>
           <Box className="search">
             <TextField
               id="search-input"
@@ -46,12 +46,12 @@ export const Search = ({ props }) => {
             />
           </Box>
         </Grid>
-        <Grid className="filter-text-column" item xs={0.8}>
+        <Grid container className="filter-text-column" alignItems="center" item xs={0.8}>
           <Typography variant="p" className="filter-text">
             Searching for:
           </Typography>
         </Grid>
-        <Grid className="button-column" item xs={1}>
+        <Grid container className="button-column" alignItems="center" item xs={1}>
           <ToggleButton
             id="looking-for-button"
             value={lookingFor}
@@ -63,7 +63,7 @@ export const Search = ({ props }) => {
             Looking For
           </ToggleButton>
         </Grid>
-        <Grid className="button-column" item xs={1}>
+        <Grid container className="button-column" alignItems="center" item xs={1}>
           <ToggleButton
             id="offering-button"
             value={offering}
