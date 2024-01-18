@@ -6,12 +6,13 @@ import PlaceIcon from "@mui/icons-material/Place";
 import MessageIcon from "@mui/icons-material/Message";
 import PersonIcon from "@mui/icons-material/Person";
 import { Modal, Paper } from "@mui/material";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export const Notice = ({ props }) => {
 
   const router = useRouter();
   const path = usePathname();
+  const searchParams = useSearchParams();
 
   const style = {
     position: 'absolute',
@@ -43,8 +44,9 @@ export const Notice = ({ props }) => {
   const [error, setError] = useState(false);
 
   const toggleNotice = () => {
-    router.push(path)
-    
+      const params = new URLSearchParams(searchParams);
+      params.delete("id");
+      router.push(path + '?' + params.toString());
   };
 
   const handleImageError = () => {

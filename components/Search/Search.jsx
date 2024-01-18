@@ -1,52 +1,41 @@
 "use client";
 import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
-import { Grid, Paper } from "@mui/material";
+import "../../src/app/globals.css";
+import { Box, Grid, Typography, ToggleButton } from "@mui/material";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export const Search = ({ props }) => {
+  const router = useRouter();
+  const path = usePathname();
+
   const [inputText, setInputText] = useState("");
-  const [showLookingFor, setLookingFor] = useState(true);
-  const [showOffering, setOffering] = useState(true);
+
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search") ?? "";
+  var lookingFor = !(searchParams.get("lookingFor") === "false");
+  var offering = !(searchParams.get("offering") === "false");
+  var input = "";
 
   let inputHandler = (e) => {
-    e.preventDefault();
-    //convert input text to lower case
-    var lowerCase = e.target.value.toLowerCase();
-    setInputText(lowerCase);
+    // //convert input text to lower case
+    input = e.target.value.toLowerCase();
+    const params = new URLSearchParams(searchParams);
+    params.set("search", input);
+    router.push(path + '?' + params.toString());
   };
 
-  let toggleLookingFor = async (e) => {
-    e.preventDefault();
-    await setLookingFor(!showLookingFor);
-    var but = document.getElementById("looking-for-button");
-    if (!showLookingFor) {
-      but.style.backgroundColor = "aquamarine";
-      but.style.textDecoration = "";
-    } else {
-      but.style.backgroundColor = "red";
-      but.style.textDecoration = "line-through";
-    }
+  let setToggle = (name, state) => {
+    const params = new URLSearchParams(searchParams);
+    params.set(name, state);
+    router.push(path + '?' + params.toString());
   };
 
-  let toggleOffering = async (e) => {
-    e.preventDefault();
-    await setOffering(!showOffering);
-    var but = document.getElementById("offering-button");
-    if (!showOffering) {
-      but.style.backgroundColor = "aquamarine";
-      but.style.textDecoration = "";
-    } else {
-      but.style.backgroundColor = "red";
-      but.style.textDecoration = "line-through";
-    }
-  };
-
-return (
-  <>
-    <Paper className="main">
+  return (
+    <Box className="main">
       <Grid container>
-        <Grid item xs={12}>
-          <Paper className="search">
+        <Grid item xs={8}>
+          <Box className="search">
             <TextField
               id="search-input"
               onChange={inputHandler}
@@ -54,31 +43,38 @@ return (
               fullWidth
               label="Search"
             />
-          </Paper>
+          </Box>
         </Grid>
         <Grid className="filter-text-column" item xs={0.8}>
-          <h4 className="filter-text">Searching for:</h4>
+          <Typography variant="p" className="filter-text">
+            Searching for:
+          </Typography>
         </Grid>
         <Grid className="button-column" item xs={1}>
-          <button
+          <ToggleButton
             id="looking-for-button"
-            className="filter-button"
-            onClick={toggleLookingFor}
+            value={lookingFor}
+            className={lookingFor ? "toggle-button-green" : "toggle-button-red"}
+            onChange={() => {
+              setToggle("lookingFor", !lookingFor);
+            }}
           >
             Looking For
-          </button>
+          </ToggleButton>
         </Grid>
         <Grid className="button-column" item xs={1}>
-          <button
+          <ToggleButton
             id="offering-button"
-            className="filter-button"
-            onClick={toggleOffering}
+            value={offering}
+            className={offering ? "toggle-button-green" : "toggle-button-red"}
+            onChange={() => {
+              setToggle("offering", !offering);
+            }}
           >
             Offering
-          </button>
+          </ToggleButton>
         </Grid>
       </Grid>
-    </Paper>
-  </>
-);
+    </Box>
+  );
 };

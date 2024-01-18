@@ -17,11 +17,11 @@ export default function Frontpage() {
   const [list, setList] = useState(notices);
   const [openedNotice, setOpenedNotice] = useState(null);
 
-
+ 
   return (
     <>
-      <Search props={setList}></Search>
-      <List props={list}></List>
+      <Search></Search>
+      <List notices={list}></List>
       {!noticeId ? null : <Notice sx={{position:'static'}} props={notices[noticeId]}/>}
     </>
   )

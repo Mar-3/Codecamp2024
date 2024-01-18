@@ -1,18 +1,19 @@
 "use client";
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
-import { usePathname, useRouter, useSearchParams} from "next/navigation";
-
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function NoticeBox({ props }) {
-  
   const router = useRouter();
-  const path = usePathname();
-  
+  const pathname = usePathname()
+  const searchParams = useSearchParams();
+
   function openNotice(id) {
-    router.push(path+"?id="+id);
+    const params = new URLSearchParams(searchParams);
+    params.set("id", id);
+    router.push(pathname + '?' + params.toString());
+    //router.push(window.location.href+"&id="+id);
   }
-  
 
   return (
     <Grid item xs={5} minHeight="15rem" sx={{ padding: "1rem" }}>
@@ -27,8 +28,10 @@ export default function NoticeBox({ props }) {
           </Typography>
         </Grid>
         <Typography component="p">{props.ingress}</Typography>
-        <Button variant="outlined" onClick={() => openNotice(props.id)} >Open notice</Button>
+        <Button variant="outlined" onClick={() => openNotice(props.id)}>
+          Open notice
+        </Button>
       </Paper>
     </Grid>
   );
-};
+}
