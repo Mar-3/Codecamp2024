@@ -6,9 +6,13 @@ import { Labels } from "@components/Labels/Labels";
 import {
   Box,
   Grid,
-  Typography
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 export const Search = ({ props }) => {
   const filters = props.filters;
@@ -52,14 +56,33 @@ export const Search = ({ props }) => {
             Searching for:
           </Typography>
         </Grid>
-        {
-            Object.entries(filters).map(([filterName, filter], i) => (
-              (filter["style"] === "exclude") &&
+        {Object.entries(filters).map(
+          ([filterName, filter], i) =>
+            filter["style"] === "exclude" && (
               <Labels
-              props={{"title": filter["title"], "labels": filter["options"]}}
+                props={{
+                  title: filter["title"],
+                  labels: filter["options"],
+                  style: filter["style"],
+                }}
               />
-            ))
-          }
+            )
+        )}
+      </Grid>
+      <Grid container item xs={6} marginLeft={2} marginRight={2}>
+        {Object.entries(filters).map(
+          ([filterName, filter], i) =>
+            filter["style"] === "include" && (
+              <Labels
+                props={{
+                  key: filterName,
+                  title: filter["title"],
+                  labels: filter["options"],
+                  style: filter["style"],
+                }}
+              />
+            )
+        )}
       </Grid>
     </Box>
   );
