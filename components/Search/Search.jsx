@@ -11,11 +11,9 @@ import {
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export const Search = ({ props }) => {
+  const filters = props.filters;
   const router = useRouter();
   const path = usePathname();
-
-  const noticeTypes = {"lookingFor": "Looking for", "offering": "Offering", "selling": "Selling", "buying": "Buying", "attention": "Attention"}
-
   const searchParams = useSearchParams();
   const search = searchParams.get("search") ?? "";
 
@@ -54,7 +52,14 @@ export const Search = ({ props }) => {
             Searching for:
           </Typography>
         </Grid>
-        <Labels props={{"title": "Notice type", "labels": noticeTypes}}></Labels>
+        {
+            Object.entries(filters).map(([filterName, filter], i) => (
+              (filter["style"] === "exclude") &&
+              <Labels
+              props={{"title": filter["title"], "labels": filter["options"]}}
+              />
+            ))
+          }
       </Grid>
     </Box>
   );

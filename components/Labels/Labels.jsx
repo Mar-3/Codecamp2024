@@ -20,7 +20,7 @@ export const Labels = ({ props }) => {
   const title = props.title
 
   const noTypeSelected =
-    Object.keys(labels).filter((v) => isChecked(v)).length === 0;
+    Object.values(labels).filter((v) => isChecked(v)).length === 0;
 
   let setToggle = (name, state) => {
     const params = new URLSearchParams(searchParams);
@@ -44,7 +44,7 @@ export const Labels = ({ props }) => {
         <FormLabel component="legend">{title}</FormLabel>
         <FormGroup>
           {
-            Object.entries(labels).map(([urlLabel, shownLabel], i) => (
+            Object.entries(labels).map(([shownLabel, urlLabel], i) => (
               <FormControlLabel
                 control={<Checkbox checked={isChecked(String(urlLabel))} />}
                 label={shownLabel}
