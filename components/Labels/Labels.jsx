@@ -45,10 +45,6 @@ export const Labels = ({ props }) => {
           }
         }
         router.push(path + "?" + params.toString());
-        if (params.get(key) === "") {
-          params.delete(key);
-          router.push(path + "?" + params.toString());
-        }
       } else {
         params.set(key, "," + name + ",");
         router.push(path + "?" + params.toString());
@@ -61,7 +57,9 @@ export const Labels = ({ props }) => {
       return !(searchParams.get(name) === "false");
     } else {
       var urlFilterValue = searchParams.get(key);
-      if (urlFilterValue) {
+      if (Object.is(urlFilterValue, "")) {
+        return false;
+      } else if (urlFilterValue) {
         var filterValue = urlFilterValue ? urlFilterValue.split(",") : [];
         return filterValue.includes(name);
       } else {
@@ -71,6 +69,9 @@ export const Labels = ({ props }) => {
   }
 
   function countSelected() {
+    if (isAllSelected()) {
+      return "";
+    }
     var urlFilterValue = searchParams.get(key);
     var count = 0;
     if (urlFilterValue) {
@@ -84,7 +85,30 @@ export const Labels = ({ props }) => {
     if (count > 0) {
       return " - " + String(count) + " selected";
     } else {
-      return "";
+      return ", None selected!";
+    }
+  }
+
+  function isAllSelected() {
+    if (
+      Object.values(labels).filter((v) => isChecked(v)).length ===
+        Object.keys(labels).length ||
+      searchParams.get(key) === null
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function toggleAll() {
+    const params = new URLSearchParams(searchParams);
+    if (isAllSelected()) {
+      params.set(key, "");
+      router.push(path + "?" + params.toString());
+    } else {
+      params.delete(key);
+      router.push(path + "?" + params.toString());
     }
   }
 
@@ -138,6 +162,13 @@ export const Labels = ({ props }) => {
               variant="standard"
             >
               <FormGroup>
+                <FormControlLabel
+                  control={<Checkbox checked={isAllSelected()} />}
+                  label="All"
+                  onChange={() => {
+                    toggleAll();
+                  }}
+                />
                 {Object.entries(labels).map(([shownLabel, urlLabel], i) => (
                   <FormControlLabel
                     control={<Checkbox checked={isChecked(String(urlLabel))} />}

@@ -14,7 +14,6 @@ export default function List({ props }) {
   const input = searchParams.get("search") ?? "";
 
   function checkFilters(notice) {
-    var passFilter = true;
     for (var i in Object.keys(filters)) {
       var filterName = String(Object.keys(filters)[i]);
       var filterType = String(filters[filterName]["style"]);
@@ -28,10 +27,13 @@ export default function List({ props }) {
       if (filterType === "exclude") {
         var urlLabel = filters[filterName]["options"][noticeValue];
         if (searchParams.get(urlLabel) === "false") {
-          passFilter = false;
+          return false;
         }
       } else if (filterType === "include") {
         var urlFilterValue = searchParams.get(filterName);
+        if (urlFilterValue === "") {
+          return false;
+        }
         if (urlFilterValue) {
           var filterValue = urlFilterValue ? urlFilterValue.split(",") : [];
           if (Array.isArray(noticeValue)) {
@@ -39,18 +41,18 @@ export default function List({ props }) {
             if (
               filterValue.filter((item) => noticeValue.includes(item)).length === 0
             ) {
-              passFilter = false;
+              return false
             }
           }
           else if (!filterValue.includes(String(noticeValue))) {
-            passFilter = false;
+            return false
           }
         }
         else {
         }
       }
     }
-    return passFilter;
+    return true;
   }
 
   //create a new array by filtering the original array
