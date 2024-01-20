@@ -47,7 +47,7 @@ export const Labels = ({ props }) => {
         router.push(path + "?" + params.toString());
         if (params.get(key) === "") {
           params.delete(key);
-          router.push(path + "?" + params.toString())
+          router.push(path + "?" + params.toString());
         }
       } else {
         params.set(key, "," + name + ",");
@@ -67,6 +67,24 @@ export const Labels = ({ props }) => {
       } else {
         return true;
       }
+    }
+  }
+
+  function countSelected() {
+    var urlFilterValue = searchParams.get(key);
+    var count = 0;
+    if (urlFilterValue) {
+      var filterValue = urlFilterValue ? urlFilterValue.split(",") : [];
+      for (var value in filterValue) {
+        if (filterValue[value] != "") {
+          count += 1;
+        }
+      }
+    }
+    if (count > 0) {
+      return " - " + String(count) + " selected";
+    } else {
+      return "";
     }
   }
 
@@ -104,34 +122,34 @@ export const Labels = ({ props }) => {
       )}
       {style === "include" && (
         <Grid marginLeft={2} marginRight={2}>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ArrowDropDownIcon />}
-            aria-controls="panel1-content"
-            id="panel1-header"
-          >
-            <Typography>{title}</Typography>
-          </AccordionSummary>
-          <FormControl
-            required
-            error={noTypeSelected}
-            component="fieldset"
-            sx={{ m: 3 }}
-            variant="standard"
-          >
-            <FormGroup>
-              {Object.entries(labels).map(([shownLabel, urlLabel], i) => (
-                <FormControlLabel
-                  control={<Checkbox checked={isChecked(String(urlLabel))} />}
-                  label={shownLabel}
-                  onChange={() => {
-                    setToggle(urlLabel, !isChecked(urlLabel));
-                  }}
-                />
-              ))}
-            </FormGroup>
-          </FormControl>
-        </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ArrowDropDownIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography>{title + String(countSelected())}</Typography>
+            </AccordionSummary>
+            <FormControl
+              required
+              error={noTypeSelected}
+              component="fieldset"
+              sx={{ m: 3 }}
+              variant="standard"
+            >
+              <FormGroup>
+                {Object.entries(labels).map(([shownLabel, urlLabel], i) => (
+                  <FormControlLabel
+                    control={<Checkbox checked={isChecked(String(urlLabel))} />}
+                    label={shownLabel}
+                    onChange={() => {
+                      setToggle(urlLabel, !isChecked(urlLabel));
+                    }}
+                  />
+                ))}
+              </FormGroup>
+            </FormControl>
+          </Accordion>
         </Grid>
       )}
     </>
