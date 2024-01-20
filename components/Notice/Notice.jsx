@@ -8,6 +8,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 
 export const Notice = ({ props }) => {
+  const notice = props.notice;
+  const user = props.user;
   const router = useRouter();
   const path = usePathname();
   const searchParams = useSearchParams();
@@ -32,12 +34,12 @@ export const Notice = ({ props }) => {
   } else {
     var unit = "m";
   }
-  const type = props.type;
-  const title = props.title;
-  const author = props.nickname;
-  const area = props.area;
-  const image = props.image;
-  const description = props.description;
+  const type = notice.type;
+  const title = notice.title;
+  const author = user.nickname;
+  const area = notice.area;
+  const image = user.image;
+  const description = notice.description;
 
   const [error, setError] = useState(false);
 
@@ -52,7 +54,9 @@ export const Notice = ({ props }) => {
   };
 
   const chatWithUser = () => {
-    router.push("/Chat?" + searchParams)
+    const params = new URLSearchParams(searchParams);
+    params.set("userId", user.id)
+    router.push("/Chat?" + params.toString());
   }
 
   return (

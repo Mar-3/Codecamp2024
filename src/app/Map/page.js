@@ -12,7 +12,8 @@ const Map = dynamic(() => import("@components/Map/Map"));
 
 export default function Frontpage() {
 
-  const notices = useContext(MockdataContext)();
+  const notices = useContext(MockdataContext)("notices");
+  const users = useContext(MockdataContext)("users");
   const filters = useContext(FiltersContext)();
   const searchParams = useSearchParams();
   const noticeId = searchParams.get("id");
@@ -20,8 +21,8 @@ export default function Frontpage() {
   return (
     <>
       <Search props={{"filters": filters}}></Search>
-      <Map props={List({"props": {"notices": notices, "filters": filters}})}></Map>
-      {!noticeId ? null : <Notice sx={{position:'static'}} props={notices[noticeId]}/>}
+      <Map props={List({"props": {"notices": notices, "users": users, "filters": filters}})}></Map>
+      {!noticeId ? null : <Notice sx={{position:'static'}} props={{"notice": notices[noticeId], "user": users[notices[noticeId]["userID"]]}}/>}
     </>
   )
 }

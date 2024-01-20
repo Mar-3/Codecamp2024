@@ -9,7 +9,8 @@ import { useSearchParams } from "next/navigation";
 
 export default function Frontpage() {
 
-  const notices = useContext(MockdataContext)();
+  const notices = useContext(MockdataContext)("notices");
+  const users = useContext(MockdataContext)("users");
   const filters = useContext(FiltersContext)();
 
   const searchParams = useSearchParams();
@@ -22,8 +23,8 @@ export default function Frontpage() {
   return (
     <>
       <Search props={{"filters": filters}}></Search>
-      <List props={{"notices": list, "filters": filters}}></List>
-      {!noticeId ? null : <Notice sx={{position:'static'}} props={notices[noticeId]}/>}
+      <List props={{"notices": list, "users": users, "filters": filters}}></List>
+      {!noticeId ? null : <Notice sx={{position:'static'}} props={{"notice": notices[noticeId], "user": users[notices[noticeId]["userID"]]}}/>}
     </>
   )
 }

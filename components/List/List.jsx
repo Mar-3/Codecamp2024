@@ -7,6 +7,7 @@ import { Grid, Typography } from "@mui/material";
 
 export default function List({ props }) {
   const notices = props.notices;
+  const users = props.users;
   const filters = props.filters;
   const path = usePathname();
   const searchParams = useSearchParams();
@@ -17,7 +18,13 @@ export default function List({ props }) {
     for (var i in Object.keys(filters)) {
       var filterName = String(Object.keys(filters)[i]);
       var filterType = String(filters[filterName]["style"]);
-      var noticeValue = notice[filterName];
+      if (notice.hasOwnProperty(filterName)) {
+        var noticeValue = notice[filterName];
+      } else if (users[notice["userID"]].hasOwnProperty(filterName)) {
+        var noticeValue = users[notice["userID"]][filterName];
+      } else {
+        return false;
+      }
       if (filterType === "exclude") {
         var urlLabel = filters[filterName]["options"][noticeValue];
         if (searchParams.get(urlLabel) === "false") {
@@ -27,7 +34,7 @@ export default function List({ props }) {
         var urlFilterValue = searchParams.get(filterName);
         if (urlFilterValue) {
           var filterValue = urlFilterValue ? urlFilterValue.split(",") : [];
-          if (!filterValue.includes(noticeValue)) {
+          if (!filterValue.includes(String(noticeValue))) {
             passFilter = false;
           }
         }

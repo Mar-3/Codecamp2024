@@ -16,30 +16,38 @@ import {
 import SendIcon from "@mui/icons-material/Send";
 import { MockdataContext } from "../../../contexts/contexts";
 import { useContext } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Chat() {
-  const notices = useContext(MockdataContext)();
+  const users = useContext(MockdataContext)("users");
   const searchParams = useSearchParams();
-  const noticeId = searchParams.get("id");
+  const userId = searchParams.get("userId");
+
+  const router = useRouter();
+
+  function selectUser(userID) {
+    const params = new URLSearchParams(searchParams);
+    params.set("userId", userID);
+    router.push("/Chat?" + params.toString());
+  }
 
   return (
     <>
       <Grid container></Grid>
       <Grid container component={Paper}>
         <Grid item xs={3}>
-          {noticeId &&
+          {userId && (
             <List>
-              <ListItem button key="RemySharp">
+              <ListItem key="RemySharp">
                 <ListItemIcon>
-                  <Avatar alt="Remy Sharp" src={notices[noticeId]["image"]} />
+                  <Avatar alt="Remy Sharp" src={users[userId]["image"]} />
                 </ListItemIcon>
                 <ListItemText
-                  primary={notices[noticeId]["nickname"]}
+                  primary={users[userId]["nickname"]}
                 ></ListItemText>
               </ListItem>
             </List>
-          }
+          )}
           <Divider />
           <Grid item xs={12} style={{ padding: "10px" }}>
             <TextField
@@ -51,34 +59,29 @@ export default function Chat() {
           </Grid>
           <Divider />
           <List>
-            <ListItem button key="RemySharp">
-              <ListItemIcon>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://material-ui.com/static/images/avatar/1.jpg"
-                />
-              </ListItemIcon>
-              <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
-              <ListItemText secondary="online" align="right"></ListItemText>
-            </ListItem>
-            <ListItem button key="Alice">
-              <ListItemIcon>
-                <Avatar
-                  alt="Alice"
-                  src="https://material-ui.com/static/images/avatar/3.jpg"
-                />
-              </ListItemIcon>
-              <ListItemText primary="Alice">Alice</ListItemText>
-            </ListItem>
-            <ListItem button key="CindyBaker">
-              <ListItemIcon>
-                <Avatar
-                  alt="Cindy Baker"
-                  src="https://material-ui.com/static/images/avatar/2.jpg"
-                />
-              </ListItemIcon>
-              <ListItemText primary="Cindy Baker">Cindy Baker</ListItemText>
-            </ListItem>
+            {Object.entries(users).map(
+              (user) =>
+                user[1]["id"] != searchParams.get("userId") && (
+                  <ListItem
+                    key={user[1]["id"]}
+                    onClick={() => selectUser(user[1]["id"])}
+                  >
+                    <ListItemIcon>
+                      <Avatar
+                        alt={user[1]["nickname"]}
+                        src={user[1]["image"]}
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary={user[1]["nickname"]}>
+                      {user[1]["nickname"]}
+                    </ListItemText>
+                    <ListItemText
+                      secondary="online"
+                      align="right"
+                    ></ListItemText>
+                  </ListItem>
+                )
+            )}
           </List>
         </Grid>
         <Grid item xs={9}>
