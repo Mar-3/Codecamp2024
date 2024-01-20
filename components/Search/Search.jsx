@@ -7,12 +7,8 @@ import {
   Box,
   Grid,
   Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
 } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 export const Search = ({ props }) => {
   const filters = props.filters;

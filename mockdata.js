@@ -124,6 +124,28 @@ export default function mockdata() {
       timedate: "11/01/2024, 12:13",
       location: [61.0502,28.1836],
     },
-  ],}
+  ],
+users: [
+  {
+    userID: 0,
+    nickname: "carjacker22",
+    image: "/two_kittens.png"
+  },
+  {
+    userID: 1,
+    nickname: "dogwalker22",
+    image: "/samoyed.jpg"
+  },
+  {
+    userID: 2,
+    nickname: "guitarplayer22",
+    image: "/turtle.jpg",
+  },
+  {
+    userID: 3,
+    nickname: "sewer22",
+    image: "/bad-path.fail",
+  }
+]}
   return mockdata.notices;
 };

@@ -6,7 +6,6 @@ import PersonIcon from "@mui/icons-material/Person";
 import { Modal, Paper, Grid, Box, Typography, Button } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { VerticalAlignTop } from "@mui/icons-material";
 
 export const Notice = ({ props }) => {
   const router = useRouter();
@@ -52,6 +51,10 @@ export const Notice = ({ props }) => {
     setError(true);
   };
 
+  const chatWithUser = () => {
+    router.push("/Chat?" + searchParams)
+  }
+
   return (
     <Modal open={true} onClose={toggleNotice}>
       <Paper style={style} className="notice" justifyContent="space-between">
@@ -90,7 +93,7 @@ export const Notice = ({ props }) => {
                     <MessageIcon className="icon" />
                   </Grid>
                   <Grid item xs={7.5}>
-                    <Button className="contact-btn" onClick={toggleNotice}>
+                    <Button className="contact-btn" onClick={chatWithUser}>
                       Contact {author}
                     </Button>
                   </Grid>

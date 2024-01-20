@@ -6,7 +6,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 
 // Add view name here to add link to app bar.
-const pages = [{name:'Front Page', link:"FrontPage"},{name:'Map', link:"Map"},{name: "New Notice", link: "NewNotice"}];
+const pages = [{name:'Front Page', link:"FrontPage"},{name:'Map', link:"Map"},{name: "New Notice", link: "NewNotice"},{name: "Chat", link: "Chat"}];
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const notLoggedInSettings = ['Login', 'Register'];
