@@ -34,9 +34,19 @@ export default function List({ props }) {
         var urlFilterValue = searchParams.get(filterName);
         if (urlFilterValue) {
           var filterValue = urlFilterValue ? urlFilterValue.split(",") : [];
-          if (!filterValue.includes(String(noticeValue))) {
+          if (Array.isArray(noticeValue)) {
+            noticeValue = noticeValue.map((item) => filters[filterName]["options"][item]);
+            if (
+              filterValue.filter((item) => noticeValue.includes(item)).length === 0
+            ) {
+              passFilter = false;
+            }
+          }
+          else if (!filterValue.includes(String(noticeValue))) {
             passFilter = false;
           }
+        }
+        else {
         }
       }
     }

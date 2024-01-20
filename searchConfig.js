@@ -16,6 +16,11 @@ export default function searchConfig() {
                 "title": "Author",
                 "options": {"carjacker22": "carjacker22", "dogwalker22": "dogwalker22", "guitarplayer22": "guitarplayer22", "sewer22": "sewer22"}
             },
+            "labels": {
+                "style": "include",
+                "title": "Labels",
+                "options": {"Sport": "sport", "Cooking": "cooking", "Music": "music", "Art": "art", "Tools": "tools", "Cars": "cars"}
+            },
     },}
     return searchConfig.filters;
   };
