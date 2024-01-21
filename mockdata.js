@@ -156,6 +156,36 @@ users: [
     nickname: "sewer22",
     image: "/bad-path.fail",
   }
+],
+messages: [
+  {
+    id: 0,
+    senderID: 0,
+    recipientID: 10,
+    time: "11/01/2024, 12:13",
+    content: "Hello, I have a carjack."
+  },
+  {
+    id: 1,
+    senderID: 0,
+    recipientID: 10,
+    time: "11/01/2024, 12:13",
+    content: "Hello, I have a carjack."
+  },
+  {
+    id: 2,
+    senderID: 0,
+    recipientID: 10,
+    time: "11/01/2024, 12:13",
+    content: "Hello, I have a carjack."
+  },
+  {
+    id: 3,
+    senderID: 0,
+    recipientID: 10,
+    time: "11/01/2024, 12:13",
+    content: "Hello, I have a carjack."
+  }
 ]}
   return mockdata[dataName];
 };

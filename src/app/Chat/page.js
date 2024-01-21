@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { React, useState } from "react";
 import {
   Divider,
   TextField,
@@ -20,8 +20,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Chat() {
   const users = useContext(MockdataContext)("users");
+  const messagesContext = useContext(MockdataContext)("messages");
   const searchParams = useSearchParams();
   const userId = searchParams.get("userId");
+  const loggedInUserID = 10;
+
+  const [messages, setMessages] = useState(messagesContext);
+  const [inputText, setInputText] = useState("");
 
   const router = useRouter();
 
@@ -31,6 +36,44 @@ export default function Chat() {
     router.push("/Chat?" + params.toString());
   }
 
+  let inputHandler = (e) => {
+    const input = e.target.value;
+    setInputText(input);
+  };
+
+  function sendMessage() {
+    if (inputText) {
+      var d = new Date(),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear(),
+        hours = d.getHours(),
+        minutes = d.getMinutes();
+
+      if (month.length < 2) {
+        month = "0" + month;
+      }
+      if (day.length < 2) {
+        day = "0" + day;
+      }
+      if (minutes.length < 2) {
+        minutes = "0" + minutes;
+      }
+
+      const date = [day, month, year].join("/") + ", " + hours + ":" + minutes;
+
+      messages.push({
+        id: messages.length,
+        senderID: loggedInUserID,
+        recipientID: parseInt(searchParams.get("userId")),
+        content: inputText,
+        time: date,
+      });
+      setInputText("");
+      setMessages(messages);
+    }
+  }
+
   return (
     <>
       <Grid container></Grid>
@@ -38,9 +81,12 @@ export default function Chat() {
         <Grid item xs={3}>
           {userId && (
             <List>
-              <ListItem key="RemySharp">
+              <ListItem key={users[userId]["id"]}>
                 <ListItemIcon>
-                  <Avatar alt="Remy Sharp" src={users[userId]["image"]} />
+                  <Avatar
+                    alt={users[userId]["nickname"]}
+                    src={users[userId]["image"]}
+                  />
                 </ListItemIcon>
                 <ListItemText
                   primary={users[userId]["nickname"]}
@@ -86,45 +132,38 @@ export default function Chat() {
         </Grid>
         <Grid item xs={9}>
           <List>
-            <ListItem key="1">
-              <Grid container>
-                <Grid item xs={12}>
-                  <ListItemText
-                    align="right"
-                    primary="Hey man, What's up ?"
-                  ></ListItemText>
-                </Grid>
-                <Grid item xs={12}>
-                  <ListItemText align="right" secondary="09:30"></ListItemText>
-                </Grid>
-              </Grid>
-            </ListItem>
-            <ListItem key="2">
-              <Grid container>
-                <Grid item xs={12}>
-                  <ListItemText
-                    align="left"
-                    primary="Hey, Iam Good! What about you ?"
-                  ></ListItemText>
-                </Grid>
-                <Grid item xs={12}>
-                  <ListItemText align="left" secondary="09:31"></ListItemText>
-                </Grid>
-              </Grid>
-            </ListItem>
-            <ListItem key="3">
-              <Grid container>
-                <Grid item xs={12}>
-                  <ListItemText
-                    align="right"
-                    primary="Cool. i am good, let's catch up!"
-                  ></ListItemText>
-                </Grid>
-                <Grid item xs={12}>
-                  <ListItemText align="right" secondary="10:30"></ListItemText>
-                </Grid>
-              </Grid>
-            </ListItem>
+            {messages.map(
+              (message) =>
+                ((message["senderID"] == loggedInUserID &&
+                  message["recipientID"] == searchParams.get("userId")) ||
+                  (message["senderID"] == searchParams.get("userId") &&
+                    message["recipientID"] == loggedInUserID)) && (
+                  <ListItem key={message["id"]}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <ListItemText
+                          align={
+                            message["senderID"] == searchParams.get("userId")
+                              ? "left"
+                              : "right"
+                          }
+                          primary={message["content"]}
+                        ></ListItemText>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <ListItemText
+                          align={
+                            message["senderID"] == searchParams.get("userId")
+                              ? "left"
+                              : "right"
+                          }
+                          secondary={message["time"]}
+                        ></ListItemText>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                )
+            )}
           </List>
           <Divider />
           <Grid container style={{ padding: "20px" }}>
@@ -133,10 +172,18 @@ export default function Chat() {
                 id="outlined-basic-email"
                 label="Type Something"
                 fullWidth
+                value={inputText}
+                defaultValue={inputText}
+                onChange={inputHandler}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    sendMessage();
+                  }
+                }}
               />
             </Grid>
             <Grid xs={1} align="right">
-              <Fab color="primary" aria-label="add">
+              <Fab color="primary" aria-label="add" onClick={sendMessage}>
                 <SendIcon />
               </Fab>
             </Grid>
