@@ -36,15 +36,19 @@ export default function List({ props }) {
         }
         if (urlFilterValue) {
           var filterValue = urlFilterValue ? urlFilterValue.split(",") : [];
+          //console.log(filterValue)
           if (Array.isArray(noticeValue)) {
-            noticeValue = noticeValue.map((item) => filters[filterName]["options"][item]);
+
+            noticeValue = noticeValue.map((item) => '"' + filters[filterName]["options"][item] + '"');
+            console.log(noticeValue)
+            console.log(filterValue)
             if (
               filterValue.filter((item) => noticeValue.includes(item)).length === 0
             ) {
               return false
             }
           }
-          else if (!filterValue.includes(String(noticeValue))) {
+          else if (!filterValue.includes('"' + noticeValue + '"')) {
             return false
           }
         }

@@ -31,22 +31,30 @@ export const Labels = ({ props }) => {
   let setToggle = (name, state) => {
     const params = new URLSearchParams(searchParams);
     if (style === "exclude") {
-      params.set(name, state);
+      if (state) {
+        params.delete(name);
+      } else {
+        params.set(name, state);
+      }
       router.push(path + "?" + params.toString());
     } else {
-      // Always including commas on both sides of the filter url key to ensure names including other names don't get mistaken for each other
       var urlFilterValue = searchParams.get(key);
       if (urlFilterValue) {
         if (state) {
-          params.set(key, urlFilterValue + "," + name + ",");
+          params.set(key, urlFilterValue + ',"' + name + '"');
         } else {
-          if (urlFilterValue.includes("," + name + ",")) {
-            params.set(key, urlFilterValue.replace("," + name + ",", ""));
+          if (urlFilterValue.includes('"' + name + '"')) {
+            params.set(
+              key,
+              urlFilterValue
+                .replace('"' + name + '"', "")
+                .replace(/(^,)|(,$)/g, "")
+            );
           }
         }
         router.push(path + "?" + params.toString());
       } else {
-        params.set(key, "," + name + ",");
+        params.set(key, '"' + name + '"');
         router.push(path + "?" + params.toString());
       }
     }
@@ -61,7 +69,7 @@ export const Labels = ({ props }) => {
         return false;
       } else if (urlFilterValue) {
         var filterValue = urlFilterValue ? urlFilterValue.split(",") : [];
-        return filterValue.includes(name);
+        return filterValue.includes('"' + name + '"');
       } else {
         return true;
       }
