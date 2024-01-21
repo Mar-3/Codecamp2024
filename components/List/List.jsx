@@ -76,7 +76,7 @@ export default function List({ props }) {
         <>
           <Grid container spacing={3} marginLeft={1 + "em"}>
             {filteredData.map((notice) => {
-              return <NoticeBox props={notice}></NoticeBox>;
+              return <NoticeBox key={'noticebox-'+notice.id} props={notice}></NoticeBox>;
             })}
           </Grid>
         </>

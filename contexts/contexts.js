@@ -1,7 +1,8 @@
 'use client'
 import { createContext } from "react";
-import notices from "../mockdata.js";
+import mockdata from "../mockdata.js";
 import filters from "../searchConfig.js";
 
-export const MockdataContext = createContext(notices);
+
+export const MockdataContext = createContext(mockdata);
 export const FiltersContext = createContext(filters)

@@ -3,6 +3,7 @@ import { AppBar, Toolbar, IconButton, Typography, Box, Menu, MenuItem, Tooltip, 
 import MenuIcon from "@mui/icons-material/Menu"
 import * as React from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 
 // Add view name here to add link to app bar.
@@ -81,8 +82,10 @@ export const Navbar = ({changeView, loggedIn, }) => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.link} href={page.link}>
-                  <Typography textAlign="center">{page.name}</Typography>
+                <MenuItem key={page.link} >
+                  <Link href={page.link}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -98,13 +101,16 @@ export const Navbar = ({changeView, loggedIn, }) => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
+              <Link
                 key={page.link}
-                href={page.link + '?' + params.toString()}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
+                href={page.link + '?' + params.toString()}>
+                  <Button
+                  sx={{ my: 2, color: 'white', display: 'block' }}>
                 {page.name}
-              </Button>
+
+                 </Button>
+              
+              </Link>
             ))}
           </Box>
 

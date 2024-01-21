@@ -46,6 +46,7 @@ export const Notice = ({ props }) => {
   const area = notice.area;
   const image = user.image;
   const description = notice.description;
+  const id = notice.id;
 
   const [error, setError] = useState(false);
 
@@ -78,7 +79,7 @@ export const Notice = ({ props }) => {
 
   return (
     <Modal open={true} onClose={toggleNotice}>
-      <Paper style={style} className="notice" justifyContent="space-between">
+      <Paper style={style} className="notice">
         <Box className="notice-content">
           <Box>
             <Grid container>
@@ -125,7 +126,7 @@ export const Notice = ({ props }) => {
               <Grid>
               <Grid item xs={0.5}><Typography variant="p">Labels:</Typography></Grid>
               {noticeLabels.map((label) => {
-              return <Grid item xs={0.5}><Button id={label} onClick={setLabel}>
+              return <Grid key={'notice-'+label} item xs={0.5}><Button id={label} onClick={setLabel}>
               {label}
             </Button></Grid>;
             })}
@@ -154,7 +155,7 @@ export const Notice = ({ props }) => {
                   )}
                 </Box>
               </Grid>
-              <Grid container justifyContent="flex-end" alignItems="flex-start" xs={1}>
+              <Grid container justifyContent="flex-end" alignItems="flex-start">
                 <Button onClick={toggleNotice}>
                   Close
                 </Button>

@@ -1,7 +1,10 @@
 'use client'
+import { NoticesContext } from "@contexts/NoticesContext";
 import { Box, FormControl, Select, MenuItem, InputLabel, TextField, Grid, Button } from "@mui/material";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
+import {useRouter} from "next/navigation";
+import { useNoticesContext } from "@contexts/NoticesContext";
 
 const types = [
   "Looking for...",
@@ -12,28 +15,42 @@ const types = [
 
 export default function NewNotice() {
 
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [ingress, setIngress] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
+  const [area, setArea] = useState("");
+
+  const {notices, setNotices} = useNoticesContext();
+
+
 
   function handleSubmit() {
     const newNotice = {
+      area: "Skinnarila",
+      id:notices.length,
       title:title,
       type:type,
       ingress:ingress,
       description:description,
-      nickname:"placeholder",
-      area: "skinnarila",
-      timedate: new Date.now(),
-      location: "asdf"
+      userID: 0,
+      nickname:"placeholder22",
+      timedate: Date.now(),
+      location: [61.0502,28.1836],
+      labels: ["Sports", "Muscic"]
     }
 
-
+    const updatedNotices = notices;
+    updatedNotices.push(newNotice)
+    setNotices(updatedNotices);
   }
 
+
+
   return (
+
     <>
     <h1>NEW NOTICE</h1>
     <Box component="form" noValidate autoComplete="off" > 
@@ -80,7 +97,7 @@ export default function NewNotice() {
         
         </FormControl>
         </Grid>
-        <Button value="Submit">Post New Notice!</Button>
+        <Button onClick={handleSubmit}>Post New Notice!</Button>
 
     </Grid>
     </Box>

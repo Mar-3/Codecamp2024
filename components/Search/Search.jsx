@@ -55,7 +55,7 @@ export const Search = ({ props }) => {
         {Object.entries(filters).map(
           ([filterName, filter], i) =>
             filter["style"] === "exclude" && (
-              <Labels
+              <Labels key={'labels2-'+filter.title}
                 props={{
                   title: filter["title"],
                   labels: filter["options"],
@@ -69,7 +69,7 @@ export const Search = ({ props }) => {
         {Object.entries(filters).map(
           ([filterName, filter], i) =>
             filter["style"] === "include" && (
-              <Labels
+              <Labels key={'labels3-'+filter.title}
                 props={{
                   key: filterName,
                   title: filter["title"],

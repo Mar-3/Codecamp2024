@@ -7,13 +7,16 @@ import dynamic from "next/dynamic";
 import { Notice } from "@components/Notice/Notice";
 import List from "@components/List/List";
 import { useSearchParams } from "next/navigation";
+import { NoticesContext, useNoticesContext } from "@contexts/NoticesContext";
 
-const Map = dynamic(() => import("@components/Map/Map"));
+const Map = dynamic(() => import("@components/Map/Map"), {
+  ssr: false
+});
 
 export default function Frontpage() {
 
-  const notices = useContext(MockdataContext)("notices");
-  const users = useContext(MockdataContext)("users");
+  const {notices, setNotices} = useNoticesContext();
+  const users = useContext(MockdataContext).users;
   const filters = useContext(FiltersContext)();
   const searchParams = useSearchParams();
   const noticeId = searchParams.get("id");

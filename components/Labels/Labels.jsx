@@ -141,6 +141,7 @@ export const Labels = ({ props }) => {
             <FormGroup>
               {Object.entries(labels).map(([shownLabel, urlLabel], i) => (
                 <FormControlLabel
+                  key={'labels4-' + shownLabel}
                   control={<Checkbox checked={isChecked(String(urlLabel))} />}
                   label={shownLabel}
                   onChange={() => {
@@ -179,6 +180,7 @@ export const Labels = ({ props }) => {
                 />
                 {Object.entries(labels).map(([shownLabel, urlLabel], i) => (
                   <FormControlLabel
+                    key={'labels2-' + shownLabel}
                     control={<Checkbox checked={isChecked(String(urlLabel))} />}
                     label={shownLabel}
                     onChange={() => {

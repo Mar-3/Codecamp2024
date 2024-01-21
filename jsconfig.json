@@ -3,8 +3,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./components/*"],
-      "@/contexts": ["./contexts/*"],
-      "@mockdata":["./mockdata"]
+      "@contexts/*": ["./contexts/*"],
+      "@mockdata":["./mockdata.js"]
     }
   }
 }
