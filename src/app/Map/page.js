@@ -22,7 +22,7 @@ export default function Frontpage() {
     <>
       <Search props={{"filters": filters}}></Search>
       <Map props={List({"props": {"notices": notices, "users": users, "filters": filters}})}></Map>
-      {!noticeId ? null : <Notice sx={{position:'static'}} props={{"notice": notices[noticeId], "user": users[notices[noticeId]["userID"]]}}/>}
+      {!noticeId ? null : <Notice sx={{position:'static'}} props={{"notice": notices[noticeId], "user": users[notices[noticeId]["userID"]], "labels": filters["labels"]["options"]}}/>}
     </>
   )
 }

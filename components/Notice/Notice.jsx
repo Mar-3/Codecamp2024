@@ -10,9 +10,15 @@ import Image from "next/image";
 export const Notice = ({ props }) => {
   const notice = props.notice;
   const user = props.user;
+  const labels =  props.labels;
   const router = useRouter();
   const path = usePathname();
   const searchParams = useSearchParams();
+  var noticeLabels = notice.labels;
+
+  if (!noticeLabels) {
+    noticeLabels = [];
+  }
 
   const style = {
     position: "absolute",
@@ -59,13 +65,24 @@ export const Notice = ({ props }) => {
     router.push("/Chat?" + params.toString());
   }
 
+  let setLabel = (e) => {
+    const name = labels[e.target.id]
+    console.log('"' + name + '"')
+    const params = new URLSearchParams(searchParams);
+    params.delete("id");
+    params.delete("labels")
+    params.set("labels", '"' + name + '"')
+    console.log(params)
+    router.push(path + "?" + params.toString());
+    }
+
   return (
     <Modal open={true} onClose={toggleNotice}>
       <Paper style={style} className="notice" justifyContent="space-between">
         <Box className="notice-content">
           <Box>
             <Grid container>
-              <Grid item xs={8}>
+              <Grid item xs={7}>
                 <Typography variant="p">{type}</Typography>
                 <Typography variant="h4">{title}</Typography>
                 <Grid container className="notice-author-info">
@@ -96,14 +113,24 @@ export const Notice = ({ props }) => {
                   <Grid item xs={0.5} className="iconColumn">
                     <MessageIcon className="icon" />
                   </Grid>
-                  <Grid item xs={7.5}>
+                  <Grid item xs={5}>
                     <Button className="contact-btn" onClick={chatWithUser}>
                       Contact {author}
                     </Button>
                   </Grid>
                 </Grid>
+                <Grid item xs={3}>
+            </Grid>
               </Grid>
-              <Grid item xs={3}>
+              <Grid>
+              <Grid item xs={0.5}><Typography variant="p">Labels:</Typography></Grid>
+              {noticeLabels.map((label) => {
+              return <Grid item xs={0.5}><Button id={label} onClick={setLabel}>
+              {label}
+            </Button></Grid>;
+            })}
+            </Grid>
+              <Grid item xs={2}>
                 <Box
                   display="flex"
                   justifyContent="flex-end"

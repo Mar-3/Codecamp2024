@@ -19,7 +19,7 @@ export default function searchConfig() {
             "labels": {
                 "style": "include",
                 "title": "Labels",
-                "options": {"Sport": "sport", "Cooking": "cooking", "Music": "music", "Art": "art", "Tools": "tools", "Cars": "cars"}
+                "options": {"Sport": "sport", "Cooking": "cooking", "Music": "music", "Art": "art", "Tools": "tools", "Cars": "cars", "Tutoring": "tutoring", "Repair": "repair"}
             },
     },}
     return searchConfig.filters;
