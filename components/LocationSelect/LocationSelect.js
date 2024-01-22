@@ -3,7 +3,7 @@ import {
   TileLayer,
   MapContainer,
   Marker,
-  CircleMarker,
+  Circle,
   useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -69,7 +69,7 @@ const LocationSelect = (props) => {
             />
             <MapEventsHandler handleMapClick={handleMapClick} />
             <Marker position={coords}></Marker>
-            <CircleMarker center={coords} radius={200}></CircleMarker>
+            <Circle center={coords} radius={100}></Circle>
           </MapContainer>
         </Box>
       </Modal>
