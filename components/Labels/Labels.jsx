@@ -40,7 +40,7 @@ export const Labels = ({ props }) => {
       router.push(path + "?" + params.toString());
     } else {
       var urlFilterValue = searchParams.get(key);
-      if (urlFilterValue) {
+      if (urlFilterValue || (urlFilterValue === "")) {
         if (state) {
           params.set(key, urlFilterValue + ',"' + name + '"');
         } else {
@@ -49,13 +49,25 @@ export const Labels = ({ props }) => {
               key,
               urlFilterValue
                 .replace('"' + name + '"', "")
-                .replace(/(^,)|(,$)/g, "")
+                .replace(/(^,)|(,$)/g, "").replace(",,", ",")
             );
           }
         }
         router.push(path + "?" + params.toString());
       } else {
-        params.set(key, '"' + name + '"');
+        var urlFilterValue = "";
+        for (var i in Object.values(labels)) {
+          if ((Object.values(labels)[i] != name) && (Object.values(labels)[i] != null)) {
+            if (urlFilterValue === "") {
+              console.log("FiRST!")
+              urlFilterValue = '"' + Object.values(labels)[i] + '"'
+            }
+            else {
+              urlFilterValue = urlFilterValue + ',"' + Object.values(labels)[i] + '"';
+            }
+          }
+          params.set(key, urlFilterValue)
+        }
         router.push(path + "?" + params.toString());
       }
     }
@@ -99,7 +111,17 @@ export const Labels = ({ props }) => {
   }
 
   function isAllSelected() {
-    if (
+    if (style === "exclude") {
+      if (
+        Object.values(labels).filter((v) => isChecked(v)).length ===
+          Object.keys(labels).length
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    else if (
       Object.values(labels).filter((v) => isChecked(v)).length ===
         Object.keys(labels).length ||
       searchParams.get(key) === null
@@ -112,13 +134,24 @@ export const Labels = ({ props }) => {
 
   function toggleAll() {
     const params = new URLSearchParams(searchParams);
-    if (isAllSelected()) {
-      params.set(key, "");
-      router.push(path + "?" + params.toString());
+    if (style === "exclude") {
+      if (isAllSelected()) {
+        for (var i in Object.values(labels)) {
+          params.set(Object.values(labels)[i], false);
+        }
+      } else {
+        for (var i in Object.values(labels)) {
+          params.delete(Object.values(labels)[i]);
+        }
+      }
     } else {
-      params.delete(key);
-      router.push(path + "?" + params.toString());
+      if (isAllSelected()) {
+        params.set(key, "");
+      } else {
+        params.delete(key);
+      }
     }
+    router.push(path + "?" + params.toString());
   }
 
   return (
@@ -146,6 +179,13 @@ export const Labels = ({ props }) => {
           >
             <FormLabel component="legend">{title}</FormLabel>
             <FormGroup>
+              <FormControlLabel
+                control={<Checkbox checked={isAllSelected()} />}
+                label="All"
+                onChange={() => {
+                  toggleAll();
+                }}
+              />
               {Object.entries(labels).map(([shownLabel, urlLabel], i) => (
                 <Grid
                   component={Box}
