@@ -11,6 +11,7 @@ import {
   Accordion,
   AccordionSummary,
   Typography,
+  Box,
 } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -125,12 +126,18 @@ export const Labels = ({ props }) => {
       {style === "exclude" && (
         <Grid
           container
-          className="button-column"
-          alignItems="center"
           item
-          xs={1.2}
+          xs={6}
+          height="4rem"
+          display="flex"
+          flexDirection="row"
+          className="button-column"
+          justifyContent="flex-start"
+          alignContent="flex-start"
         >
           <FormControl
+            item
+            xs={12}
             required
             error={noTypeSelected}
             component="fieldset"
@@ -140,14 +147,21 @@ export const Labels = ({ props }) => {
             <FormLabel component="legend">{title}</FormLabel>
             <FormGroup>
               {Object.entries(labels).map(([shownLabel, urlLabel], i) => (
-                <FormControlLabel
-                  key={'labels4-' + shownLabel}
-                  control={<Checkbox checked={isChecked(String(urlLabel))} />}
-                  label={shownLabel}
-                  onChange={() => {
-                    setToggle(urlLabel, !isChecked(urlLabel));
-                  }}
-                />
+                <Grid
+                  component={Box}
+                  item
+                  height="10rem"
+                  xs={12}
+                  key={"typelabel-" + urlLabel}
+                >
+                  <FormControlLabel
+                    control={<Checkbox checked={isChecked(String(urlLabel))} />}
+                    label={shownLabel}
+                    onChange={() => {
+                      setToggle(urlLabel, !isChecked(urlLabel));
+                    }}
+                  />
+                </Grid>
               ))}
             </FormGroup>
           </FormControl>
@@ -180,7 +194,7 @@ export const Labels = ({ props }) => {
                 />
                 {Object.entries(labels).map(([shownLabel, urlLabel], i) => (
                   <FormControlLabel
-                    key={'labels2-' + shownLabel}
+                    key={"labels2-" + shownLabel}
                     control={<Checkbox checked={isChecked(String(urlLabel))} />}
                     label={shownLabel}
                     onChange={() => {

@@ -23,31 +23,30 @@ export const Search = ({ props }) => {
   };
 
   return (
-    <Box className="main" marginTop={2} marginBottom={2} marginLeft={3 + "em"}>
+    <Box
+      className="main"
+      marginTop={2}
+      marginBottom={2}
+      spacing={1}
+      marginLeft={3 + "em"}
+    >
+      <Typography variant="p" className="filter-text">
+        Searching for:
+      </Typography>
       <Grid container>
-        <Grid container item xs={6} marginRight={2} alignItems="center">
+        <Grid item xs={5} marginRight={2} marginTop={3}>
           <Box className="search" width={100 + "%"}>
             <TextField
               id="search-input"
               onChange={inputHandler}
-              variant="outlined"
               fullWidth
+              variant="filled"
               label="Search"
               defaultValue={search}
             />
           </Box>
         </Grid>
-        <Grid
-          container
-          className="filter-text-column"
-          alignItems="center"
-          item
-          xs={0.8}
-        >
-          <Typography variant="p" className="filter-text">
-            Searching for:
-          </Typography>
-        </Grid>
+
         {Object.entries(filters).map(
           ([filterName, filter], i) =>
             filter["style"] === "exclude" && (
@@ -62,7 +61,15 @@ export const Search = ({ props }) => {
             )
         )}
       </Grid>
-      <Grid container item xs={6} marginLeft={2} marginRight={2}>
+      <Grid
+        container
+        item
+        xs={12}
+        marginLeft={2}
+        marginRight={2}
+        marginTop={2}
+        marginBottom={5}
+      >
         {Object.entries(filters).map(
           ([filterName, filter], i) =>
             filter["style"] === "include" && (
