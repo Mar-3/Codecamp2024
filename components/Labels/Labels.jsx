@@ -59,7 +59,6 @@ export const Labels = ({ props }) => {
         for (var i in Object.values(labels)) {
           if ((Object.values(labels)[i] != name) && (Object.values(labels)[i] != null)) {
             if (urlFilterValue === "") {
-              console.log("FiRST!")
               urlFilterValue = '"' + Object.values(labels)[i] + '"'
             }
             else {

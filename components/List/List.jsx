@@ -36,12 +36,8 @@ export default function List({ props }) {
         }
         if (urlFilterValue) {
           var filterValue = urlFilterValue ? urlFilterValue.split(",") : [];
-          //console.log(filterValue)
           if (Array.isArray(noticeValue)) {
-
             noticeValue = noticeValue.map((item) => '"' + filters[filterName]["options"][item] + '"');
-            console.log(noticeValue)
-            console.log(filterValue)
             if (
               filterValue.filter((item) => noticeValue.includes(item)).length === 0
             ) {
