@@ -1,3 +1,4 @@
+"use client";
 import React, { createContext, useCallback } from "react";
 import { MockdataContext } from "@contexts/contexts";
 import mockdata from "@mockdata";
