@@ -54,7 +54,7 @@ export default function NewNotice() {
 
   function handleSubmit() {
     const newNotice = {
-      area: "Skinnarila",
+      area: area,
       id: notices.length,
       title: title,
       type: type,
@@ -190,11 +190,7 @@ export default function NewNotice() {
                 setLabel(value);
               }}
               renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Size small"
-                  placeholder="Favorites"
-                />
+                <TextField {...params} label="Categories" />
               )}
             />
           </Grid>
