@@ -1,4 +1,8 @@
 "use client";
+
+// Based on "Chat Component built with React and Material-UI" example by Muhammad Awais Feb 3, 2020 on medium.com
+// https://medium.com/@awaisshaikh94/chat-component-built-with-react-and-material-ui-c2b0d9ccc491
+
 import { React, useState } from "react";
 import {
   Divider,

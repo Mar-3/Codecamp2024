@@ -78,7 +78,7 @@ const mockdata = {
       description:
         "additional information and description related to the notice. lorem ipsum dolor sit amet, consectetur adipiscing elit. vestibulum consequat efficitur felis, ut feugiat justo cursus et. maecenas dapibus dictum eros vel lacinia. proin suscipit posuere purus vitae eleifend. maecenas mauris elit, porttitor et magna vel, venenatis egestas diam. aliquam eleifend dictum iaculis. nunc placerat tortor orci, id commodo nisl pulvinar mattis. duis a sem consequat eros ornare feugiat. proin tempor arcu feugiat dignissim maximus. pellentesque tincidunt congue odio, ac gravida nulla. aliquam eu iaculis massa. donec vitae dui ut eros fermentum suscipit quis id nibh. proin et posuere libero. suspendisse potenti. nulla ornare viverra massa sed molestie. fusce dignissim tellus scelerisque aliquam efficitur.",
       userID: 0,
-      area: "skinnarila",
+      area: "Skinnarila",
       timedate: "1705877137120",
       location: [61.0592, 28.1836],
     },
