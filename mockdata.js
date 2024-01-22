@@ -1,5 +1,5 @@
-const mockdata =
-{ notices: [
+const mockdata = {
+  notices: [
     {
       id: 0,
       title: "need a carjack in the weekend in Skinnarila!",
@@ -12,7 +12,7 @@ const mockdata =
       image: "/two_kittens.png",
       area: "Skinnarila",
       timedate: "1705877135870",
-      location: [61.0569,28.0953],
+      location: [61.0569, 28.0953],
     },
     {
       id: 1,
@@ -26,7 +26,7 @@ const mockdata =
       image: "/samoyed.jpg",
       area: "Kourula",
       timedate: "1705877134870",
-      location: [61.0533,28.1038],
+      location: [61.0533, 28.1038],
     },
     {
       id: 2,
@@ -40,7 +40,7 @@ const mockdata =
       image: "/turtle.jpg",
       area: "Skinnarila",
       timedate: "1705877132870",
-      location: [61.0377,28.1007],
+      location: [61.0377, 28.1007],
     },
     {
       id: 3,
@@ -54,7 +54,7 @@ const mockdata =
       image: "/bad-path.fail",
       area: "Skinnarila",
       timedate: "1705877137570",
-      location: [61.0502,28.1836],
+      location: [61.0502, 28.1836],
     },
     {
       id: 4,
@@ -67,7 +67,7 @@ const mockdata =
       userID: 0,
       area: "Kourula",
       timedate: "1705877137370",
-      location: [61.0502,28.1836],
+      location: [61.0502, 28.1836],
     },
     {
       id: 5,
@@ -80,7 +80,7 @@ const mockdata =
       userID: 0,
       area: "skinnarila",
       timedate: "1705877137120",
-      location: [61.0502,28.1836],
+      location: [61.0502, 28.1836],
     },
     {
       id: 6,
@@ -93,7 +93,7 @@ const mockdata =
       userID: 0,
       area: "Skinnarila",
       timedate: "1705877137820",
-      location: [61.0502,28.1836],
+      location: [61.0502, 28.1836],
     },
     {
       id: 7,
@@ -106,11 +106,12 @@ const mockdata =
       userID: 0,
       area: "Leiri",
       timedate: "1705877127870",
-      location: [61.0502,28.1836],
+      location: [61.0502, 28.1836],
     },
     {
       id: 8,
-      title: "Interested in starting a game project, message if you want to partner up!",
+      title:
+        "Interested in starting a game project, message if you want to partner up!",
       type: "Looking for...",
       labels: ["Hobbies", "Gaming"],
       ingress: "lorem upsum",
@@ -119,7 +120,7 @@ const mockdata =
       userID: 0,
       area: "Skinnarila",
       timedate: "1705877117870",
-      location: [61.0502,28.1836],
+      location: [61.0502, 28.1836],
     },
     {
       id: 9,
@@ -132,65 +133,66 @@ const mockdata =
       userID: 0,
       area: "Sammonlahti",
       timedate: "1705877122870",
-      location: [61.0502,28.1836],
+      location: [61.0502, 28.1836],
     },
   ],
-users: [
-  {
-    id: 0,
-    nickname: "carjacker22",
-    image: "/two_kittens.png"
-  },
-  {
-    id: 1,
-    nickname: "dogwalker22",
-    image: "/samoyed.jpg"
-  },
-  {
-    id: 2,
-    nickname: "guitarplayer22",
-    image: "/turtle.jpg",
-  },
-  {
-    id: 3,
-    nickname: "sewer22",
-    image: "/bad-path.fail",
-  },
-  {
-    id: 4,
-    nickname: "placeholder22",
-    image: "/turtle.jpg",
-  }
-],
-messages: [
-  {
-    id: 0,
-    senderID: 0,
-    recipientID: 10,
-    time: "11/01/2024, 12:13",
-    content: "Hello, I have a carjack."
-  },
-  {
-    id: 1,
-    senderID: 0,
-    recipientID: 10,
-    time: "11/01/2024, 12:13",
-    content: "Hello, I have a carjack."
-  },
-  {
-    id: 2,
-    senderID: 0,
-    recipientID: 10,
-    time: "11/01/2024, 12:13",
-    content: "Hello, I have a carjack."
-  },
-  {
-    id: 3,
-    senderID: 0,
-    recipientID: 10,
-    time: "11/01/2024, 12:13",
-    content: "Hello, I have a carjack."
-  }
-]};
+  users: [
+    {
+      id: 0,
+      nickname: "carjacker22",
+      image: "/two_kittens.png",
+    },
+    {
+      id: 1,
+      nickname: "dogwalker22",
+      image: "/samoyed.jpg",
+    },
+    {
+      id: 2,
+      nickname: "guitarplayer22",
+      image: "/turtle.jpg",
+    },
+    {
+      id: 3,
+      nickname: "sewer22",
+      image: "/bad-path.fail",
+    },
+    {
+      id: 4,
+      nickname: "placeholder22",
+      image: "/turtle.jpg",
+    },
+  ],
+  messages: [
+    {
+      id: 0,
+      senderID: 0,
+      recipientID: 10,
+      time: "11/01/2024, 12:13",
+      content: "Hello, I have a carjack.",
+    },
+    {
+      id: 1,
+      senderID: 2,
+      recipientID: 10,
+      time: "11/01/2024, 12:13",
+      content: "Hello, I have a carjack.",
+    },
+    {
+      id: 2,
+      senderID: 0,
+      recipientID: 10,
+      time: "11/01/2024, 12:13",
+      content: "Hello, I have a carjack.",
+    },
+    {
+      id: 3,
+      senderID: 0,
+      recipientID: 10,
+      time: "11/01/2024, 12:13",
+      content: "Hello, I have a carjack.",
+    },
+  ],
+};
 
 export default mockdata;

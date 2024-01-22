@@ -12,11 +12,13 @@ import {
   Grid,
   Paper,
   Typography,
+  buttonClasses,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { MockdataContext } from "../../../contexts/contexts";
 import { useContext } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Snackbar } from "@mui/material";
 
 export default function Chat() {
   const users = useContext(MockdataContext).users;
@@ -27,6 +29,16 @@ export default function Chat() {
 
   const [messages, setMessages] = useState(messagesContext);
   const [inputText, setInputText] = useState("");
+
+  const [SB, setSB] = useState({
+    open: false,
+    vertical: "bottom",
+    horizontal: "left",
+  });
+
+  const handleSBClose = () => {
+    setSB({ ...SB, open: false });
+  };
 
   const router = useRouter();
 
@@ -71,6 +83,7 @@ export default function Chat() {
       });
       setInputText("");
       setMessages(messages);
+      setSB({ ...SB, open: true });
     }
   }
 
@@ -189,6 +202,12 @@ export default function Chat() {
           </Grid>
         </Grid>
       </Grid>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        open={SB.open}
+        onClose={handleSBClose}
+        message={"Message sent!"}
+      />
     </>
   );
 }

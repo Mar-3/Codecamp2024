@@ -10,6 +10,7 @@ import {
   Paper,
   Typography,
   Autocomplete,
+  Snackbar,
 } from "@mui/material";
 import React, { useContext } from "react";
 import { useState } from "react";
@@ -41,6 +42,16 @@ export default function NewNotice() {
 
   const { notices, setNotices } = useNoticesContext();
 
+  const [SB, setSB] = useState({
+    vertical: "bottom",
+    horizontal: "left",
+    open: false,
+  });
+
+  const handleSBClose = () => {
+    setSB({ ...SB, open: false });
+  };
+
   function handleSubmit() {
     const newNotice = {
       area: "Skinnarila",
@@ -53,13 +64,13 @@ export default function NewNotice() {
       nickname: "placeholder22",
       timedate: Date.now(),
       location: coords,
-      labels: ["Sports", "Muscic"],
+      labels: labels,
     };
 
     const updatedNotices = notices;
     updatedNotices.push(newNotice);
     setNotices(updatedNotices);
-    console.log(notices);
+    setSB({ ...SB, open: true });
   }
 
   return (
@@ -78,9 +89,10 @@ export default function NewNotice() {
           direction="row"
           justifyContent="baseline"
           alignContent="center"
+          alignItems="center"
           spacing={3}
-          marginLeft="20%"
-          marginRight="20%"
+          marginLeft="30%"
+          marginRight="30%"
           marginTop="5%"
         >
           <Typography alignSelf={"center"} variant={"h4"}>
@@ -193,6 +205,12 @@ export default function NewNotice() {
           </Grid>
         </Grid>
       </Box>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        open={SB.open}
+        onClose={handleSBClose}
+        message={"New Notice Added!"}
+      />
     </>
   );
 }
