@@ -3,11 +3,7 @@ import { React } from "react";
 import TextField from "@mui/material/TextField";
 import "../../src/app/globals.css";
 import { Labels } from "@components/Labels/Labels";
-import {
-  Box,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export const Search = ({ props }) => {
@@ -55,7 +51,8 @@ export const Search = ({ props }) => {
         {Object.entries(filters).map(
           ([filterName, filter], i) =>
             filter["style"] === "exclude" && (
-              <Labels key={'labels2-'+filter.title}
+              <Labels
+                key={"labels2-" + filter.title}
                 props={{
                   title: filter["title"],
                   labels: filter["options"],
@@ -69,7 +66,8 @@ export const Search = ({ props }) => {
         {Object.entries(filters).map(
           ([filterName, filter], i) =>
             filter["style"] === "include" && (
-              <Labels key={'labels3-'+filter.title}
+              <Labels
+                key={"labels3-" + filter.title}
                 props={{
                   key: filterName,
                   title: filter["title"],

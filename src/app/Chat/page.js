@@ -19,8 +19,8 @@ import { useContext } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Chat() {
-  const users = useContext(MockdataContext)("users");
-  const messagesContext = useContext(MockdataContext)("messages");
+  const users = useContext(MockdataContext).users;
+  const messagesContext = useContext(MockdataContext).messages;
   const searchParams = useSearchParams();
   const userId = searchParams.get("userId");
   const loggedInUserID = 10;
@@ -173,7 +173,6 @@ export default function Chat() {
                 label="Type Something"
                 fullWidth
                 value={inputText}
-                defaultValue={inputText}
                 onChange={inputHandler}
                 onKeyPress={(e) => {
                   if (e.key === "Enter") {
@@ -182,7 +181,7 @@ export default function Chat() {
                 }}
               />
             </Grid>
-            <Grid xs={1} align="right">
+            <Grid item xs={1} align="right">
               <Fab color="primary" aria-label="add" onClick={sendMessage}>
                 <SendIcon />
               </Fab>

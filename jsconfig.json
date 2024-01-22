@@ -4,7 +4,7 @@
       "@/*": ["./src/*"],
       "@components/*": ["./components/*"],
       "@contexts/*": ["./contexts/*"],
-      "@mockdata":["./mockdata.js"]
+      "@mockdata": ["./mockdata.js"]
     }
   }
 }

@@ -11,8 +11,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.4",
+    "@mui/icons-material": "^5.15.5",
     "@mui/material": "^5.15.4",
+    "@react-leaflet/core": "^2.1.0",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "next": "14.0.4",
