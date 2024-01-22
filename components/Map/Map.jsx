@@ -42,7 +42,7 @@ export default function Map({ props }) {
                 key={notice.id}
                 center={notice.location}
                 pathOptions={fillRedOptions}
-                radius={200}
+                radius={100}
               >
                 <Popup>
                   <NoticeBox props={notice} />

@@ -54,7 +54,7 @@ const mockdata = {
       image: "/bad-path.fail",
       area: "Skinnarila",
       timedate: "1705877137570",
-      location: [61.0502, 28.1836],
+      location: [61.0583, 28.1839],
     },
     {
       id: 4,
@@ -67,7 +67,7 @@ const mockdata = {
       userID: 0,
       area: "Kourula",
       timedate: "1705877137370",
-      location: [61.0502, 28.1836],
+      location: [61.0482, 28.1816],
     },
     {
       id: 5,
@@ -80,7 +80,7 @@ const mockdata = {
       userID: 0,
       area: "skinnarila",
       timedate: "1705877137120",
-      location: [61.0502, 28.1836],
+      location: [61.0592, 28.1836],
     },
     {
       id: 6,
@@ -93,7 +93,7 @@ const mockdata = {
       userID: 0,
       area: "Skinnarila",
       timedate: "1705877137820",
-      location: [61.0502, 28.1836],
+      location: [61.0504, 28.1866],
     },
     {
       id: 7,
@@ -106,7 +106,7 @@ const mockdata = {
       userID: 0,
       area: "Leiri",
       timedate: "1705877127870",
-      location: [61.0502, 28.1836],
+      location: [61.0528, 28.1844],
     },
     {
       id: 8,
@@ -120,7 +120,7 @@ const mockdata = {
       userID: 0,
       area: "Skinnarila",
       timedate: "1705877117870",
-      location: [61.0502, 28.1836],
+      location: [61.0512, 28.1836],
     },
     {
       id: 9,
@@ -133,7 +133,7 @@ const mockdata = {
       userID: 0,
       area: "Sammonlahti",
       timedate: "1705877122870",
-      location: [61.0502, 28.1836],
+      location: [61.0502, 28.1826],
     },
   ],
   users: [
@@ -169,28 +169,28 @@ const mockdata = {
       senderID: 0,
       recipientID: 10,
       time: "11/01/2024, 12:13",
-      content: "Hello, I have a carjack.",
+      content: "Hello, I need a carjack.",
     },
     {
       id: 1,
       senderID: 2,
       recipientID: 10,
       time: "11/01/2024, 12:13",
-      content: "Hello, I have a carjack.",
+      content: "You wanna practice together some time this week?",
     },
     {
       id: 2,
       senderID: 0,
       recipientID: 10,
       time: "11/01/2024, 12:13",
-      content: "Hello, I have a carjack.",
+      content: "You have a carjack?",
     },
     {
       id: 3,
       senderID: 0,
       recipientID: 10,
       time: "11/01/2024, 12:13",
-      content: "Hello, I have a carjack.",
+      content: "Hey, I'm not sure if you heared, but I really need carjack...",
     },
   ],
 };
