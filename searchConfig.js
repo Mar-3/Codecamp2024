@@ -44,6 +44,7 @@ export default function searchConfig() {
           Cars: "cars",
           Tutoring: "tutoring",
           Repair: "repair",
+          Animals: "animals"
         },
       },
     },

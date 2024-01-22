@@ -30,9 +30,6 @@ export const Search = ({ props }) => {
       spacing={1}
       marginLeft={3 + "em"}
     >
-      <Typography variant="p" className="filter-text">
-        Searching for:
-      </Typography>
       <Grid container>
         <Grid item xs={5} marginRight={2} marginTop={3}>
           <Box className="search" width={100 + "%"}>
