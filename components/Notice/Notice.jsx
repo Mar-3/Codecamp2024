@@ -68,12 +68,18 @@ export const Notice = ({ props }) => {
 
   let setLabel = (e) => {
     const name = labels[e.target.id]
-    console.log('"' + name + '"')
     const params = new URLSearchParams(searchParams);
     params.delete("id");
     params.delete("labels")
     params.set("labels", '"' + name + '"')
-    console.log(params)
+    router.push(path + "?" + params.toString());
+    }
+
+  let setAuthor = (e) => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("id");
+    params.delete("nickname");
+    params.set("nickname", '"' + author + '"')
     router.push(path + "?" + params.toString());
     }
 
@@ -93,7 +99,7 @@ export const Notice = ({ props }) => {
                   <Grid item xs={7.5}>
                     <Typography variant="p">
                       Author:&nbsp;{" "}
-                      <Button onClick={toggleNotice}>{author}</Button>
+                      <Button id={"author"} onClick={setAuthor}>{author}</Button>
                     </Typography>
                   </Grid>
                 </Grid>
